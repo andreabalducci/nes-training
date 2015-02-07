@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CqrsEsSample.Domain
+namespace SimpleEventStore.Domain
 {
 	public class ItemUnloaded
 	{
@@ -13,28 +13,4 @@ namespace CqrsEsSample.Domain
 			Quantity = quantity;
 		}
 	}
-
-
-    public class ItemSottoScorta
-	{
-        public Guid Id { get; set; }
-
-        public ItemSottoScorta(Guid id)
-		{
-			Id = id;
-        }
-	}
-
-    public class ItemUnloadFailed
-    {
-        public ItemUnloadFailed(Guid id, decimal qta)
-        {
-            Id = id;
-            Qta = qta;
-        }
-
-        public Guid Id { get; set; }
-        public Decimal Qta { get; set; }
-
-    }
 }

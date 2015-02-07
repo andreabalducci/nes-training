@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CqrsEsSample.Domain
+namespace SimpleEventStore.Domain
 {
 	public class ItemLoaded
 	{
@@ -12,11 +12,4 @@ namespace CqrsEsSample.Domain
 			Quantity = quantity;
 		}
 	}
-
-    public class ItemDisabled
-    {
-        public Guid Id { get; set; }
-
-    }
-
 }

@@ -1,7 +1,7 @@
 ﻿using System;
-using CqrsEsSample.Eventstore;
+using SimpleEventStore.Eventstore;
 
-namespace CqrsEsSample.Domain
+namespace SimpleEventStore.Domain
 {
     public class Item : AggregateBase
     {

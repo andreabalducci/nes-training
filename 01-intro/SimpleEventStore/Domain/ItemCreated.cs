@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CqrsEsSample.Domain
+namespace SimpleEventStore.Domain
 {
 	public class ItemCreated
 	{

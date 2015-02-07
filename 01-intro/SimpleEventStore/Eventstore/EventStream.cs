@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CqrsEsSample.Eventstore
+namespace SimpleEventStore.Eventstore
 {
     public class EventStream
     {

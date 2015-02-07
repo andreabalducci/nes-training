@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace CqrsEsSample.Eventstore
+namespace SimpleEventStore.Eventstore
 {
     public class Repository
     {

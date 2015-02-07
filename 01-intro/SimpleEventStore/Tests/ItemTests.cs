@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CqrsEsSample.Domain;
-using CqrsEsSample.Eventstore;
 using NUnit.Framework;
+using SimpleEventStore.Domain;
+using SimpleEventStore.Eventstore;
 
-namespace CqrsEsSample.Tests
+namespace SimpleEventStore.Tests
 {
     [TestFixture]
     public class ItemTests

@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\ItemDisabled.cs" />
+    <Compile Include="Domain\ItemSottoScorta.cs" />
+    <Compile Include="Domain\ItemUnloadFailed.cs" />
     <Compile Include="Eventstore\AggregateBase.cs" />
     <Compile Include="Domain\Item.cs" />
     <Compile Include="Domain\ItemCreated.cs" />
@@ -57,8 +60,12 @@
     <Compile Include="Eventstore\EventStream.cs" />
     <Compile Include="Eventstore\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Articolo.cs" />
+    <Compile Include="Tests\ElencoArticoli.cs" />
     <Compile Include="Tests\ItemTests.cs" />
     <Compile Include="Tests\Journal.cs" />
+    <Compile Include="Tests\JournalItem.cs" />
+    <Compile Include="Tests\PrelievoFallito.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

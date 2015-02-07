@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CqrsEsSample.Eventstore
+namespace SimpleEventStore.Eventstore
 {
     public abstract class AggregateBase
 	{
