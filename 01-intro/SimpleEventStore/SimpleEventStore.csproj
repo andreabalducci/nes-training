@@ -58,7 +58,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\FailedPickingModel.cs" />
     <Compile Include="Query\ItemModel.cs" />
-    <Compile Include="Query\ItemsProjection.cs" />
+    <Compile Include="Query\ItemsProjectionClient.cs" />
     <Compile Include="Query\Journal.cs" />
     <Compile Include="Query\JournalItemModel.cs" />
   </ItemGroup>

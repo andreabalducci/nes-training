@@ -6,9 +6,9 @@ namespace SimpleEventStore.Eventstore
 {
     public class Repository
     {
-        private string _storage;
+        private readonly string _storage;
 
-        private Action<object> Dispatcher = (evt) =>{};
+        private readonly Action<object> _dispatcher = (evt) =>{};
 
         public Repository(string evenstStoreFolder = null, Action<object> eventsDispatcher = null)
         {
@@ -17,7 +17,7 @@ namespace SimpleEventStore.Eventstore
                 Directory.CreateDirectory(_storage);
 
             if(eventsDispatcher != null)
-                Dispatcher = eventsDispatcher;
+                _dispatcher = eventsDispatcher;
         }
 
         public TAggregate GetById<TAggregate>(string id) where TAggregate : AggregateBase, new()
@@ -54,7 +54,7 @@ namespace SimpleEventStore.Eventstore
         {
             for (int i = stream.LastDispatchedEventIdx; i < stream.Version; i++)
             {
-                Dispatcher(stream.Events[i]);
+                _dispatcher(stream.Events[i]);
             }
         }
     }

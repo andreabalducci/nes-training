@@ -1,32 +1,32 @@
 {
-  "$type": "CqrsEsSample.Eventstore.EventStream, CqrsEsSample",
+  "$type": "SimpleEventStore.Eventstore.EventStream, SimpleEventStore",
   "Events": {
     "$type": "System.Collections.Generic.List`1[[System.Object, mscorlib]], mscorlib",
     "$values": [
       {
-        "$type": "CqrsEsSample.Domain.ItemCreated, CqrsEsSample",
+        "$type": "SimpleEventStore.Domain.Events.ItemCreated, SimpleEventStore",
         "Id": "4b8c2f8f-bdf3-47a7-b316-8ce5efa3b33e",
-        "Code": "ART1",
-        "Description": "Paste per la colazione",
+        "Code": "SN0001",
+        "Description": "Snacks",
         "Uom": "NR"
       },
       {
-        "$type": "CqrsEsSample.Domain.ItemLoaded, CqrsEsSample",
+        "$type": "SimpleEventStore.Domain.Events.ItemLoaded, SimpleEventStore",
         "Id": "4b8c2f8f-bdf3-47a7-b316-8ce5efa3b33e",
         "Quantity": 100.0
       },
       {
-        "$type": "CqrsEsSample.Domain.ItemLoaded, CqrsEsSample",
+        "$type": "SimpleEventStore.Domain.Events.ItemLoaded, SimpleEventStore",
         "Id": "4b8c2f8f-bdf3-47a7-b316-8ce5efa3b33e",
         "Quantity": 50.0
       },
       {
-        "$type": "CqrsEsSample.Domain.ItemUnloaded, CqrsEsSample",
+        "$type": "SimpleEventStore.Domain.Events.ItemUnloaded, SimpleEventStore",
         "Id": "4b8c2f8f-bdf3-47a7-b316-8ce5efa3b33e",
         "Quantity": 50.0
       },
       {
-        "$type": "CqrsEsSample.Domain.ItemDisabled, CqrsEsSample",
+        "$type": "SimpleEventStore.Domain.Events.ItemDisabled, SimpleEventStore",
         "Id": "4b8c2f8f-bdf3-47a7-b316-8ce5efa3b33e"
       }
     ]

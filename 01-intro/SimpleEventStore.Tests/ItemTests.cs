@@ -14,12 +14,13 @@ namespace SimpleEventStore.Tests
     [TestFixture]
     public class ItemTests
     {
+        private string _evenstStoreFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tests");
         private const string Id = "4B8C2F8F-BDF3-47A7-B316-8CE5EFA3B33E";
 
         [Test]
         public void create_item()
         {
-            var item = new Item(Id, "001", "SSD Crucial M4 256GB", "NR", 100);
+            var item = new Item(Id, "001", "SSD Crucial M4 256GB", "NR", 50);
             item.Load(100);
             item.Unload(30);
 
@@ -82,7 +83,7 @@ namespace SimpleEventStore.Tests
         [Test]
         public void load_from_disk()
         {
-            var repository = new Repository(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tests"));
+            var repository = new Repository(_evenstStoreFolder);
             var item = repository.GetById<Item>(Id);
 
             Assert.IsNotNull(item);
@@ -105,7 +106,7 @@ namespace SimpleEventStore.Tests
             item.Disable();
             Assert.IsTrue(item.Disabled);
 
-            var repository = new Repository(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tests"));
+            var repository = new Repository(_evenstStoreFolder);
             repository.Save(item);
         }
 
@@ -154,7 +155,7 @@ namespace SimpleEventStore.Tests
 
             });
 
-            var repository = new Repository(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tests"), ascolta_eventi);
+            var repository = new Repository(_evenstStoreFolder, ascolta_eventi);
             repository.Save(item);
         }
 
@@ -181,90 +182,31 @@ namespace SimpleEventStore.Tests
 
             var item2 = new Item(Guid.NewGuid().ToString(), "ART2", "Caffè", "GR", 100);
 
-            var listaArticoli = new ItemsProjection();
-
-            var eventsObserver = new Action<object>((evt) =>
-            {
-                var created = evt as ItemCreated;
-                if (created != null)
-                {
-                    listaArticoli.Items.Add(new ItemModel()
-                        {
-                            Id = created.Id,
-                            Codice = created.Code,
-                            Descrizione = created.Description
-                        });
-                }
-
-                //var loaded = evt as ItemLoaded;
-                //if (loaded != null)
-                //{
-                //    var ji = journal.GetOrCreateItem(loaded.Id);
-                //    ji.Total += loaded.Quantity;
-                //    Debug.WriteLine("Caricato {0} con qta {1}, totale {2}", ji.Description, loaded.Quantity, ji.Total);
-                //}
-
-                //var unloaded = evt as ItemUnloaded;
-                //if (unloaded != null)
-                //{
-                //    var ji = journal.GetOrCreateItem(unloaded.Id);
-                //    ji.Total -= unloaded.Quantity;
-                //    Debug.WriteLine("Scaricato {0} con qta {1}, totale {2}", ji.Description, unloaded.Quantity, ji.Total);
-                //}
-
-                var disabled = evt as ItemDisabled;
-                if (disabled != null)
-                {
-                    listaArticoli.Items.RemoveAll(x => x.Id == disabled.Id);
-                }
-
-                var sottoScorta = evt as ItemBelowSafetyStockLevel;
-                if (sottoScorta != null)
-                {
-                    var articolo = listaArticoli.Items.First(x => x.Id == sottoScorta.Id);
-                    listaArticoli.ItemsUnderMinimunAvailability.Add(new ItemModel
-                    {
-                        Id = sottoScorta.Id,
-                        Codice = articolo.Codice,
-                        Descrizione = articolo.Descrizione
-                    });
-                }
-
-                var unloadFailed = evt as ItemUnloadFailed;
-                if (unloadFailed != null)
-                {
-                    var articolo = listaArticoli.Items.First(x => x.Id == unloadFailed.Id);
-                    listaArticoli.FailedPickings.Add(new FailedPickingModel
-                    {
-                        Id = unloadFailed.Id,
-                        Codice = articolo.Codice,
-                        Descrizione = articolo.Descrizione,
-                        QuantitàRichiesta = unloadFailed.Qta
-
-                    });
-                }
-            });
-
             item2.Disable();
 
-            var repository = new Repository(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tests"), eventsObserver);
+            var projectionClient = new ItemsProjectionClient();
+            var repository = new Repository(
+                _evenstStoreFolder, 
+                projectionClient.Observe
+            );
+
             repository.Save(item);
             repository.Save(item2);
 
 
-            foreach (var articolo in listaArticoli.Items)
+            foreach (var itemModel in projectionClient.Items)
             {
-                Debug.WriteLine("ItemModel: {0} [{1}]", articolo.Descrizione, articolo.Codice);
+                Debug.WriteLine("ItemModel: {0} [{1}]", itemModel.Description, itemModel.Sku);
             }
 
-            foreach (var articolo in listaArticoli.ItemsUnderMinimunAvailability)
+            foreach (var itemModel in projectionClient.ItemsUnderMinimunAvailability)
             {
-                Debug.WriteLine("ItemModel sottoscorta: {0} [{1}]", articolo.Descrizione, articolo.Codice);
-            } 
-            
-            foreach (var articolo in listaArticoli.FailedPickings)
+                Debug.WriteLine("ItemModel sottoscorta: {0} [{1}]", itemModel.Description, itemModel.Sku);
+            }
+
+            foreach (var itemModel in projectionClient.FailedPickings)
             {
-                Debug.WriteLine("ItemModel sottoscorta: {0} [{1}] - InStock richiesta {2}", articolo.Descrizione, articolo.Codice , articolo.QuantitàRichiesta);
+                Debug.WriteLine("ItemModel sottoscorta: {0} [{1}] - InStock richiesta {2}", itemModel.Description, itemModel.Sku , itemModel.Quantity);
             }
         }
     }
