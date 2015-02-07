@@ -11,7 +11,7 @@ namespace SimpleEventStore.Domain
 
         private decimal _qta;
         public decimal Qta { get { return _qta; }
-            internal set { _qta = value; }
+            set { _qta = value; }
         }
 
 

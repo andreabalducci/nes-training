@@ -8,6 +8,5 @@ namespace SimpleEventStore.Tests
         public string Codice { get; set; }
         public string Descrizione { get; set; }
         public decimal Quantit‡Richiesta { get; set; }
-
     }
 }

@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Intro", "01 Intro", "{70
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleEventStore", "01-intro\SimpleEventStore\SimpleEventStore.csproj", "{361C9332-4EF3-406B-98BB-A1CC2A658085}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleEventStore.Tests", "01-intro\SimpleEventStore.Tests\SimpleEventStore.Tests.csproj", "{06F1CFFC-7E10-4B41-87A5-9480AFEFF680}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,11 +19,16 @@ Global
 		{361C9332-4EF3-406B-98BB-A1CC2A658085}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{361C9332-4EF3-406B-98BB-A1CC2A658085}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{361C9332-4EF3-406B-98BB-A1CC2A658085}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06F1CFFC-7E10-4B41-87A5-9480AFEFF680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06F1CFFC-7E10-4B41-87A5-9480AFEFF680}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06F1CFFC-7E10-4B41-87A5-9480AFEFF680}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06F1CFFC-7E10-4B41-87A5-9480AFEFF680}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{361C9332-4EF3-406B-98BB-A1CC2A658085} = {7086B47F-1B74-4F26-BEB9-34AFF182A858}
+		{06F1CFFC-7E10-4B41-87A5-9480AFEFF680} = {7086B47F-1B74-4F26-BEB9-34AFF182A858}
 	EndGlobalSection
 EndGlobal

@@ -49,7 +49,7 @@ namespace SimpleEventStore.Eventstore
                 throw new Exception("Error restoring aggregate");
 		}
 
-		internal static T Load<T>(EventStream stream)  where T:AggregateBase, new()
+        public static T Load<T>(EventStream stream)  where T:AggregateBase, new()
 		{
 			var aggregate = new T();
 			aggregate.Load(stream);
