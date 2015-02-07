@@ -1,0 +1,36 @@
+{
+  "$type": "CqrsEsSample.Eventstore.EventStream, CqrsEsSample",
+  "Events": {
+    "$type": "System.Collections.Generic.List`1[[System.Object, mscorlib]], mscorlib",
+    "$values": [
+      {
+        "$type": "CqrsEsSample.Domain.ItemCreated, CqrsEsSample",
+        "Id": "4b8c2f8f-bdf3-47a7-b316-8ce5efa3b33e",
+        "Code": "ART1",
+        "Description": "Paste per la colazione",
+        "Uom": "NR"
+      },
+      {
+        "$type": "CqrsEsSample.Domain.ItemLoaded, CqrsEsSample",
+        "Id": "4b8c2f8f-bdf3-47a7-b316-8ce5efa3b33e",
+        "Quantity": 100.0
+      },
+      {
+        "$type": "CqrsEsSample.Domain.ItemLoaded, CqrsEsSample",
+        "Id": "4b8c2f8f-bdf3-47a7-b316-8ce5efa3b33e",
+        "Quantity": 50.0
+      },
+      {
+        "$type": "CqrsEsSample.Domain.ItemUnloaded, CqrsEsSample",
+        "Id": "4b8c2f8f-bdf3-47a7-b316-8ce5efa3b33e",
+        "Quantity": 50.0
+      },
+      {
+        "$type": "CqrsEsSample.Domain.ItemDisabled, CqrsEsSample",
+        "Id": "4b8c2f8f-bdf3-47a7-b316-8ce5efa3b33e"
+      }
+    ]
+  },
+  "Version": 5,
+  "LastDispatchedEventIdx": 0
+}
