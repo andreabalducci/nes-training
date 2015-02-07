@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using NUnit.Framework;
 using SimpleEventStore.Domain;
+using SimpleEventStore.Domain.Events;
 using SimpleEventStore.Eventstore;
 
 namespace SimpleEventStore.Tests

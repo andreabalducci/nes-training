@@ -45,14 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\ItemDisabled.cs" />
-    <Compile Include="Domain\ItemSottoScorta.cs" />
-    <Compile Include="Domain\ItemUnloadFailed.cs" />
+    <Compile Include="Domain\Events\ItemDisabled.cs" />
+    <Compile Include="Domain\Events\ItemSottoScorta.cs" />
+    <Compile Include="Domain\Events\ItemUnloadFailed.cs" />
     <Compile Include="Eventstore\AggregateBase.cs" />
     <Compile Include="Domain\Item.cs" />
-    <Compile Include="Domain\ItemCreated.cs" />
-    <Compile Include="Domain\ItemLoaded.cs" />
-    <Compile Include="Domain\ItemUnloaded.cs" />
+    <Compile Include="Domain\Events\ItemCreated.cs" />
+    <Compile Include="Domain\Events\ItemLoaded.cs" />
+    <Compile Include="Domain\Events\ItemUnloaded.cs" />
     <Compile Include="Eventstore\EventStream.cs" />
     <Compile Include="Eventstore\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

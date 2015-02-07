@@ -1,4 +1,5 @@
 ﻿using System;
+using SimpleEventStore.Domain.Events;
 using SimpleEventStore.Eventstore;
 
 namespace SimpleEventStore.Domain

@@ -1,6 +1,6 @@
 using System;
 
-namespace SimpleEventStore.Domain
+namespace SimpleEventStore.Domain.Events
 {
     public class ItemDisabled
     {

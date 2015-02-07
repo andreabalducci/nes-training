@@ -1,12 +1,13 @@
 ﻿using System;
 
-namespace SimpleEventStore.Domain
+namespace SimpleEventStore.Domain.Events
 {
-	public class ItemLoaded
+	public class ItemUnloaded
 	{
         public Guid Id { get; set; }
 		public decimal Quantity { get; set; }
-		public ItemLoaded(Guid id, decimal quantity)
+
+        public ItemUnloaded(Guid id, decimal quantity)
 		{
 			Id = id;
 			Quantity = quantity;
