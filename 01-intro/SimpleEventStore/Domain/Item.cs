@@ -6,19 +6,14 @@ namespace SimpleEventStore.Domain
 {
     public class Item : AggregateBase
     {
+        private decimal SafetyStockLevel { get; set; }
+        internal decimal InStock { get; private set; }
+        internal bool Disabled { get; private set; }
+
+
         public Item()
         {
         }
-
-        private decimal _qta;
-        public decimal Qta { get { return _qta; }
-            set { _qta = value; }
-        }
-
-
-        private bool _disabled;
-        private decimal _minQta;
-        public bool Disabled { get { return _disabled; } }
 
         public Item(string id, string code, string description, string uom, decimal minQta)
         {
@@ -27,62 +22,61 @@ namespace SimpleEventStore.Domain
 
         public void Load(decimal quantity)
         {
-            if (_disabled)
+            if (Disabled)
                 throw new Exception("Item disabled");
             RaiseEvent(new ItemLoaded(Id, quantity));
         }
 
         public void Unload(decimal quantity)
         {
-            if (_disabled)
+            if (Disabled)
                 throw new Exception("Item disabled");
-            if (_qta < quantity)
+            if (InStock < quantity)
             {
                 RaiseEvent(new ItemUnloadFailed(Id, quantity));
             }
             else
             {
                 RaiseEvent(new ItemUnloaded(Id, quantity));
-                if (_minQta > _qta)
+                if (SafetyStockLevel > InStock)
                 {
-                    RaiseEvent(new ItemUnderMinimunAvailability(Id));
+                    RaiseEvent(new ItemBelowSafetyStockLevel(Id));
                 }
             }
         }
 
         public void Disable()
         {
-            if (_disabled)
+            if (Disabled)
                 return;
             //    throw new Exception("Item already disabled");
             //if (_qta > 0)
             //    throw new Exception("Item qta");
-            RaiseEvent(new ItemDisabled(){Id = Id});
+            RaiseEvent(new ItemDisabled {Id = Id});
         }
 
         public void Apply(ItemCreated evt)
         {
-            this.Id = evt.Id;
-            _minQta = evt.MinQta;
+            Id = evt.Id;
+            SafetyStockLevel = evt.MinQta;
         }
 
         public void Apply(ItemLoaded evt)
         {
-            _qta += evt.Quantity;
+            InStock += evt.Quantity;
         }
 
         public void Apply(ItemUnloaded evt)
         {
-            _qta -= evt.Quantity;
-            
+            InStock -= evt.Quantity;
         }
 
         public void Apply(ItemDisabled evt)
         {
-            _disabled = true;
+            Disabled = true;
         }
 
-        public void Apply(ItemUnderMinimunAvailability evt)
+        public void Apply(ItemBelowSafetyStockLevel evt)
         {
         }
 

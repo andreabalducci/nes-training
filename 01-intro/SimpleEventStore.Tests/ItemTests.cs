@@ -88,7 +88,7 @@ namespace SimpleEventStore.Tests
             Assert.IsNotNull(item);
             Assert.AreEqual(Id, item.Id);
 
-            Assert.AreEqual(100, item.Qta);
+            Assert.AreEqual(100, item.InStock);
         }
 
         [Test]
@@ -99,9 +99,9 @@ namespace SimpleEventStore.Tests
             item.Load(100);
             item.Load(50);
 
-            Assert.AreEqual(150, item.Qta);
+            Assert.AreEqual(150, item.InStock);
             item.Unload(50);
-            Assert.AreEqual(100, item.Qta);
+            Assert.AreEqual(100, item.InStock);
             item.Disable();
             Assert.IsTrue(item.Disabled);
 
@@ -118,9 +118,9 @@ namespace SimpleEventStore.Tests
             item.Load(100);
             item.Load(50);
 
-            Assert.AreEqual(150, item.Qta);
+            Assert.AreEqual(150, item.InStock);
             item.Unload(40);
-            Assert.AreEqual(110, item.Qta);
+            Assert.AreEqual(110, item.InStock);
             item.Disable();
             Assert.IsTrue(item.Disabled);
 
@@ -162,10 +162,9 @@ namespace SimpleEventStore.Tests
         public void test_carico()
         {
             var item = new Item();
-            item.Qta = 100;
-            item.Load(50);
+            item.Load(150);
 
-            Assert.AreEqual(150, item.Qta);
+            Assert.AreEqual(150, item.InStock);
             Assert.AreEqual(1, item.Events.Count);
             Assert.IsTrue(item.Events[0] is ItemLoaded);
         }
@@ -184,7 +183,7 @@ namespace SimpleEventStore.Tests
 
             var listaArticoli = new ItemsProjection();
 
-            var ascolta_eventi = new Action<object>((evt) =>
+            var eventsObserver = new Action<object>((evt) =>
             {
                 var created = evt as ItemCreated;
                 if (created != null)
@@ -219,7 +218,7 @@ namespace SimpleEventStore.Tests
                     listaArticoli.Items.RemoveAll(x => x.Id == disabled.Id);
                 }
 
-                var sottoScorta = evt as ItemUnderMinimunAvailability;
+                var sottoScorta = evt as ItemBelowSafetyStockLevel;
                 if (sottoScorta != null)
                 {
                     var articolo = listaArticoli.Items.First(x => x.Id == sottoScorta.Id);
@@ -248,7 +247,7 @@ namespace SimpleEventStore.Tests
 
             item2.Disable();
 
-            var repository = new Repository(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tests"), ascolta_eventi);
+            var repository = new Repository(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tests"), eventsObserver);
             repository.Save(item);
             repository.Save(item2);
 
@@ -265,7 +264,7 @@ namespace SimpleEventStore.Tests
             
             foreach (var articolo in listaArticoli.FailedPickings)
             {
-                Debug.WriteLine("ItemModel sottoscorta: {0} [{1}] - Qta richiesta {2}", articolo.Descrizione, articolo.Codice , articolo.QuantitàRichiesta);
+                Debug.WriteLine("ItemModel sottoscorta: {0} [{1}] - InStock richiesta {2}", articolo.Descrizione, articolo.Codice , articolo.QuantitàRichiesta);
             }
         }
     }

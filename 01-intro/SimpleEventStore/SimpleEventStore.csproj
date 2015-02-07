@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Events\ItemDisabled.cs" />
-    <Compile Include="Domain\Events\ItemUnderMinimunAvailability.cs" />
+    <Compile Include="Domain\Events\ItemBelowSafetyStockLevel.cs" />
     <Compile Include="Domain\Events\ItemUnloadFailed.cs" />
     <Compile Include="Eventstore\AggregateBase.cs" />
     <Compile Include="Domain\Item.cs" />
