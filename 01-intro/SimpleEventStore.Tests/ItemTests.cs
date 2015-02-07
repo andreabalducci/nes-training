@@ -13,12 +13,12 @@ namespace SimpleEventStore.Tests
     [TestFixture]
     public class ItemTests
     {
-        private Guid _id = new Guid("4B8C2F8F-BDF3-47A7-B316-8CE5EFA3B33E");
+        private const string Id = "4B8C2F8F-BDF3-47A7-B316-8CE5EFA3B33E";
 
         [Test]
         public void create_item()
         {
-            var item = new Item(_id, "001", "SSD Crucial M4 256GB", "NR", 100);
+            var item = new Item(Id, "001", "SSD Crucial M4 256GB", "NR", 100);
             item.Load(100);
             item.Unload(30);
 
@@ -28,7 +28,7 @@ namespace SimpleEventStore.Tests
         [Test]
         public void save_item()
         {
-            var item = new Item(_id, "001", "SSD Crucial M4 256GB", "NR", 100);
+            var item = new Item(Id, "001", "SSD Crucial M4 256GB", "NR", 100);
             var stream = new EventStream();
             item.Save(stream);
 
@@ -44,7 +44,7 @@ namespace SimpleEventStore.Tests
                                  Events =
                                      new List<object>(new[]
 						                 {
-						                     new ItemCreated(_id, "001", "SSD Crucial M4 256GB", "NR", 100)
+						                     new ItemCreated(Id, "001", "SSD Crucial M4 256GB", "NR", 100)
 						                 }),
                                  Version = 1
                              };
@@ -52,7 +52,7 @@ namespace SimpleEventStore.Tests
             var item = AggregateBase.Load<Item>(stream);
 
             Assert.AreEqual(1, item.Version);
-            Assert.AreEqual(_id, item.Id);
+            Assert.AreEqual(Id, item.Id);
         }
 
         [Test]
@@ -66,11 +66,11 @@ namespace SimpleEventStore.Tests
 
             var repository = new Repository(eventsDispatcher: dispatcher);
 
-            string fname = repository.GetFileNameOfAggregateStream(_id);
+            string fname = repository.GetFileNameOfAggregateStream(Id);
             if (File.Exists(fname))
                 File.Delete(fname);
 
-            var item = new Item(_id, "001", "SSD Crucial M4 256GB", "NR", 100);
+            var item = new Item(Id, "001", "SSD Crucial M4 256GB", "NR", 100);
             repository.Save(item);
 
             Assert.IsTrue(File.Exists(fname));
@@ -82,10 +82,10 @@ namespace SimpleEventStore.Tests
         public void load_from_disk()
         {
             var repository = new Repository(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tests"));
-            var item = repository.GetById<Item>(_id);
+            var item = repository.GetById<Item>(Id);
 
             Assert.IsNotNull(item);
-            Assert.AreEqual(_id, item.Id);
+            Assert.AreEqual(Id, item.Id);
 
             Assert.AreEqual(100, item.Qta);
         }
@@ -93,7 +93,7 @@ namespace SimpleEventStore.Tests
         [Test]
         public void vita_dell_articolo()
         {
-            var item = new Item(_id, "ART1", "Paste per la colazione", "NR", 100);
+            var item = new Item(Id, "ART1", "Paste per la colazione", "NR", 100);
 
             item.Load(100);
             item.Load(50);
@@ -112,7 +112,7 @@ namespace SimpleEventStore.Tests
         [Test]
         public void genera_giornale_di_magazzino()
         {
-            var item = new Item(_id, "ART1", "Paste per la colazione", "NR", 100);
+            var item = new Item(Id, "ART1", "Paste per la colazione", "NR", 100);
 
             item.Load(100);
             item.Load(50);
@@ -172,14 +172,14 @@ namespace SimpleEventStore.Tests
         [Test]
         public void genera_elenco_di_articoli()
         {
-            var item = new Item(_id, "ART1", "Paste per la colazione", "NR", 90);
+            var item = new Item(Id, "ART1", "Paste per la colazione", "NR", 90);
 
             item.Load(100);
             item.Unload(50);
 
             item.Unload(5000);
 
-            var item2 = new Item(Guid.NewGuid(), "ART2", "Caffè", "GR", 100);
+            var item2 = new Item(Guid.NewGuid().ToString(), "ART2", "Caffè", "GR", 100);
 
             var listaArticoli = new ElencoArticoli();
 

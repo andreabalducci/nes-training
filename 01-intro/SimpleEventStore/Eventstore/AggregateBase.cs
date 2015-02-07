@@ -5,7 +5,7 @@ namespace SimpleEventStore.Eventstore
 {
     public abstract class AggregateBase
 	{
-        public Guid Id { get; protected set; }
+        public string Id { get; protected set; }
 		private IList<object> _events = new List<object>();
 		public int Version {
 			get { return _events.Count; }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace SimpleEventStore.Tests
 {
-    public class Journal : Dictionary<Guid, JournalItem>
+    public class Journal : Dictionary<string, JournalItem>
     {
-        public JournalItem GetOrCreateItem(Guid id)
+        public JournalItem GetOrCreateItem(string id)
         {
             JournalItem ji;
             TryGetValue(id, out ji);

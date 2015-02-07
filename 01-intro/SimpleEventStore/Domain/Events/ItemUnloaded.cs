@@ -4,10 +4,10 @@ namespace SimpleEventStore.Domain.Events
 {
 	public class ItemUnloaded
 	{
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 		public decimal Quantity { get; set; }
 
-        public ItemUnloaded(Guid id, decimal quantity)
+        public ItemUnloaded(string id, decimal quantity)
 		{
 			Id = id;
 			Quantity = quantity;

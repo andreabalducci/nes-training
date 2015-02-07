@@ -20,7 +20,7 @@ namespace SimpleEventStore.Eventstore
                 Dispatcher = eventsDispatcher;
         }
 
-        public TAggregate GetById<TAggregate>(Guid id) where TAggregate : AggregateBase, new()
+        public TAggregate GetById<TAggregate>(string id) where TAggregate : AggregateBase, new()
         {
             var json = File.ReadAllText(GetFileNameOfAggregateStream(id));
             var stream = (EventStream) JsonConvert.DeserializeObject(json, new JsonSerializerSettings()
@@ -45,9 +45,9 @@ namespace SimpleEventStore.Eventstore
             Dispatch(stream);
         }
 
-        public string GetFileNameOfAggregateStream(Guid aggregateId)
+        public string GetFileNameOfAggregateStream(string aggregateId)
         {
-            return Path.Combine(_storage, aggregateId.ToString() + ".json");
+            return Path.Combine(_storage, aggregateId + ".json");
         }
 
         private void Dispatch(EventStream stream)

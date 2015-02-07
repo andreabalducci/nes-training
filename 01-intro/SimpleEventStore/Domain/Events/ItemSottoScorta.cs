@@ -4,9 +4,9 @@ namespace SimpleEventStore.Domain.Events
 {
     public class ItemSottoScorta
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
-        public ItemSottoScorta(Guid id)
+        public ItemSottoScorta(string id)
         {
             Id = id;
         }

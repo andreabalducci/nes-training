@@ -4,9 +4,9 @@ namespace SimpleEventStore.Domain.Events
 {
 	public class ItemLoaded
 	{
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 		public decimal Quantity { get; set; }
-		public ItemLoaded(Guid id, decimal quantity)
+        public ItemLoaded(string id, decimal quantity)
 		{
 			Id = id;
 			Quantity = quantity;

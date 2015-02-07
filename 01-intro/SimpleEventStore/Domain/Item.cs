@@ -20,7 +20,7 @@ namespace SimpleEventStore.Domain
         private decimal _minQta;
         public bool Disabled { get { return _disabled; } }
 
-        public Item(Guid id, string code, string description, string uom, decimal minQta)
+        public Item(string id, string code, string description, string uom, decimal minQta)
         {
             RaiseEvent(new ItemCreated(id, code, description, uom, minQta));
         }

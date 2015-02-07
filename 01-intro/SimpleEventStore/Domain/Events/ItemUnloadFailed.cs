@@ -4,13 +4,13 @@ namespace SimpleEventStore.Domain.Events
 {
     public class ItemUnloadFailed
     {
-        public ItemUnloadFailed(Guid id, decimal qta)
+        public ItemUnloadFailed(string id, decimal qta)
         {
             Id = id;
             Qta = qta;
         }
 
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public Decimal Qta { get; set; }
 
     }
