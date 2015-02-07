@@ -45,7 +45,7 @@ namespace SimpleEventStore.Domain
                 RaiseEvent(new ItemUnloaded(Id, quantity));
                 if (_minQta > _qta)
                 {
-                    RaiseEvent(new ItemSottoScorta(Id));
+                    RaiseEvent(new ItemUnderMinimunAvailability(Id));
                 }
             }
         }
@@ -82,7 +82,7 @@ namespace SimpleEventStore.Domain
             _disabled = true;
         }
 
-        public void Apply(ItemSottoScorta evt)
+        public void Apply(ItemUnderMinimunAvailability evt)
         {
         }
 

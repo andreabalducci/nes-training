@@ -2,11 +2,11 @@
 
 namespace SimpleEventStore.Domain.Events
 {
-    public class ItemSottoScorta
+    public class ItemUnderMinimunAvailability
     {
         public string Id { get; set; }
 
-        public ItemSottoScorta(string id)
+        public ItemUnderMinimunAvailability(string id)
         {
             Id = id;
         }

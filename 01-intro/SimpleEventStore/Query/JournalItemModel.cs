@@ -1,6 +1,6 @@
-﻿namespace SimpleEventStore.Tests
+﻿namespace SimpleEventStore.Query
 {
-    public class JournalItem
+    public class JournalItemModel
     {
         public string Code { get; set; }
 

@@ -43,12 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Articolo.cs" />
-    <Compile Include="ElencoArticoli.cs" />
     <Compile Include="ItemTests.cs" />
-    <Compile Include="Journal.cs" />
-    <Compile Include="JournalItem.cs" />
-    <Compile Include="PrelievoFallito.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

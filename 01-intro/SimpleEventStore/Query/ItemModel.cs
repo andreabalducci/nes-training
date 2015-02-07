@@ -1,8 +1,6 @@
-using System;
-
-namespace SimpleEventStore.Tests
+namespace SimpleEventStore.Query
 {
-    public class Articolo
+    public class ItemModel
     {
         public string Id { get; set; }
         public string Codice { get; set; }

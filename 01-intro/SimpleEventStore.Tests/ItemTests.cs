@@ -7,6 +7,7 @@ using NUnit.Framework;
 using SimpleEventStore.Domain;
 using SimpleEventStore.Domain.Events;
 using SimpleEventStore.Eventstore;
+using SimpleEventStore.Query;
 
 namespace SimpleEventStore.Tests
 {
@@ -181,14 +182,14 @@ namespace SimpleEventStore.Tests
 
             var item2 = new Item(Guid.NewGuid().ToString(), "ART2", "Caffè", "GR", 100);
 
-            var listaArticoli = new ElencoArticoli();
+            var listaArticoli = new ItemsProjection();
 
             var ascolta_eventi = new Action<object>((evt) =>
             {
                 var created = evt as ItemCreated;
                 if (created != null)
                 {
-                    listaArticoli.Articoli.Add(new Articolo()
+                    listaArticoli.Items.Add(new ItemModel()
                         {
                             Id = created.Id,
                             Codice = created.Code,
@@ -215,14 +216,14 @@ namespace SimpleEventStore.Tests
                 var disabled = evt as ItemDisabled;
                 if (disabled != null)
                 {
-                    listaArticoli.Articoli.RemoveAll(x => x.Id == disabled.Id);
+                    listaArticoli.Items.RemoveAll(x => x.Id == disabled.Id);
                 }
 
-                var sottoScorta = evt as ItemSottoScorta;
+                var sottoScorta = evt as ItemUnderMinimunAvailability;
                 if (sottoScorta != null)
                 {
-                    var articolo = listaArticoli.Articoli.First(x => x.Id == sottoScorta.Id);
-                    listaArticoli.ArticoliSottoScorta.Add(new Articolo
+                    var articolo = listaArticoli.Items.First(x => x.Id == sottoScorta.Id);
+                    listaArticoli.ItemsUnderMinimunAvailability.Add(new ItemModel
                     {
                         Id = sottoScorta.Id,
                         Codice = articolo.Codice,
@@ -233,8 +234,8 @@ namespace SimpleEventStore.Tests
                 var unloadFailed = evt as ItemUnloadFailed;
                 if (unloadFailed != null)
                 {
-                    var articolo = listaArticoli.Articoli.First(x => x.Id == unloadFailed.Id);
-                    listaArticoli.PrelieviFalliti.Add(new PrelievoFallito
+                    var articolo = listaArticoli.Items.First(x => x.Id == unloadFailed.Id);
+                    listaArticoli.FailedPickings.Add(new FailedPickingModel
                     {
                         Id = unloadFailed.Id,
                         Codice = articolo.Codice,
@@ -252,19 +253,19 @@ namespace SimpleEventStore.Tests
             repository.Save(item2);
 
 
-            foreach (var articolo in listaArticoli.Articoli)
+            foreach (var articolo in listaArticoli.Items)
             {
-                Debug.WriteLine("Articolo: {0} [{1}]", articolo.Descrizione, articolo.Codice);
+                Debug.WriteLine("ItemModel: {0} [{1}]", articolo.Descrizione, articolo.Codice);
             }
 
-            foreach (var articolo in listaArticoli.ArticoliSottoScorta)
+            foreach (var articolo in listaArticoli.ItemsUnderMinimunAvailability)
             {
-                Debug.WriteLine("Articolo sottoscorta: {0} [{1}]", articolo.Descrizione, articolo.Codice);
+                Debug.WriteLine("ItemModel sottoscorta: {0} [{1}]", articolo.Descrizione, articolo.Codice);
             } 
             
-            foreach (var articolo in listaArticoli.PrelieviFalliti)
+            foreach (var articolo in listaArticoli.FailedPickings)
             {
-                Debug.WriteLine("Articolo sottoscorta: {0} [{1}] - Qta richiesta {2}", articolo.Descrizione, articolo.Codice , articolo.QuantitàRichiesta);
+                Debug.WriteLine("ItemModel sottoscorta: {0} [{1}] - Qta richiesta {2}", articolo.Descrizione, articolo.Codice , articolo.QuantitàRichiesta);
             }
         }
     }
