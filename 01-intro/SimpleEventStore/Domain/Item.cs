@@ -15,9 +15,9 @@ namespace SimpleEventStore.Domain
         {
         }
 
-        public Item(string id, string code, string description, string uom, decimal minQta)
+        public Item(string id, string code, string description, string uom, decimal safetyStockLevel)
         {
-            RaiseEvent(new ItemCreated(id, code, description, uom, minQta));
+            RaiseEvent(new ItemCreated(id, code, description, uom, safetyStockLevel));
         }
 
         public void Load(decimal quantity)

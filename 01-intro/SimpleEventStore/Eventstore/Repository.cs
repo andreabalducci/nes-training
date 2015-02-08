@@ -22,7 +22,7 @@ namespace SimpleEventStore.Eventstore
 
         public TAggregate GetById<TAggregate>(string id) where TAggregate : AggregateBase, new()
         {
-            var json = File.ReadAllText(GetFileNameOfAggregateStream(id));
+            var json = File.ReadAllText(MakeAggregateStreamFileName(id));
             var stream = (EventStream) JsonConvert.DeserializeObject(json, new JsonSerializerSettings()
                 {
                     TypeNameHandling = TypeNameHandling.All
@@ -40,12 +40,12 @@ namespace SimpleEventStore.Eventstore
                     Formatting = Formatting.Indented
                 });
 
-            File.WriteAllText(GetFileNameOfAggregateStream(aggregate.Id), json);
+            File.WriteAllText(MakeAggregateStreamFileName(aggregate.Id), json);
 
             Dispatch(stream);
         }
 
-        public string GetFileNameOfAggregateStream(string aggregateId)
+        public string MakeAggregateStreamFileName(string aggregateId)
         {
             return Path.Combine(_storage, aggregateId + ".json");
         }
