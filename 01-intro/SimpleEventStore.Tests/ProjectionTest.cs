@@ -54,7 +54,7 @@ namespace SimpleEventStore.Tests
                 }
             });
 
-            var repository = new Repository(TestConfig.EvenstStoreFolder, eventsObserver);
+            var repository = new Repository(TestConfig.TestStore, eventsObserver);
             repository.Save(snacks);
         }
     }

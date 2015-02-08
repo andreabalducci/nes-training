@@ -84,7 +84,7 @@ namespace SimpleEventStore.Tests
         [Test]
         public void load_from_repository()
         {
-            var repository = new Repository(TestConfig.EvenstStoreFolder);
+            var repository = new Repository(TestConfig.PreloadedStore);
             var item = repository.GetById<Item>(TestConfig.Id);
 
             Assert.IsNotNull(item);
@@ -107,7 +107,7 @@ namespace SimpleEventStore.Tests
             item.Disable();
             Assert.IsTrue(item.Disabled);
 
-            var repository = new Repository(TestConfig.EvenstStoreFolder);
+            var repository = new Repository(TestConfig.TestStore);
             repository.Save(item);
 
             // check json file
@@ -141,7 +141,7 @@ namespace SimpleEventStore.Tests
 
             var projectionClient = new ItemsProjectionClient();
             var repository = new Repository(
-                TestConfig.EvenstStoreFolder, 
+                TestConfig.TestStore, 
                 projectionClient.Observe
             );
 
