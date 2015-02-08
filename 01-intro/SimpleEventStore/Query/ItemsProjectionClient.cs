@@ -1,11 +1,15 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using Newtonsoft.Json;
 using SimpleEventStore.Domain.Events;
 
 namespace SimpleEventStore.Query
 {
     public class ItemsProjectionClient
     {
+        public Action<string> Log = (s) => { };
         public ItemsProjectionClient()
         {
             Items = new List<ItemModel>();
@@ -19,6 +23,7 @@ namespace SimpleEventStore.Query
 
         private void On(ItemCreated created)
         {
+            Log(string.Format("Added item {0}", created.Id));
             Items.Add(new ItemModel
             {
                 Id = created.Id,
@@ -40,6 +45,7 @@ namespace SimpleEventStore.Query
 
         private void On(ItemDisabled disabled)
         {
+            Log(string.Format("Removing item {0}", disabled.Id));
             Items.RemoveAll(x => x.Id == disabled.Id);
         }
 
@@ -50,18 +56,36 @@ namespace SimpleEventStore.Query
             {
                 Id = unloadFailed.Id,
                 Sku = articolo.Sku,
-                Description = articolo.Description,
+                ItemDescription = articolo.Description,
                 Quantity = unloadFailed.Qta
             });
         }
 
         public void Observe(object evt)
         {
-            var handler = GetType().GetMethod("On", new[] { evt.GetType() });
+            var handler = GetType().GetMethod(
+                "On",
+                BindingFlags.Instance | BindingFlags.NonPublic,
+                null,
+                new[] { evt.GetType() },
+                null
+            );
+
             if (handler != null)
             {
+                Log(string.Format(
+                    "Handled event {0}\n{1}",
+                    evt.GetType().Name,
+                    JsonConvert.SerializeObject(evt, Formatting.Indented)
+                ));
                 handler.Invoke(this, new[] { evt });
+                return;
             }
+
+            Log(string.Format(
+                "Event {0} not handled",
+                evt.GetType().Name
+            ));
 
             //var loaded = evt as ItemLoaded;
             //if (loaded != null)

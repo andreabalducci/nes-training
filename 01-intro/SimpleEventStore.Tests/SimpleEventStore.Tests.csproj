@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="items_projections_tests.cs" />
     <Compile Include="TestConfig.cs" />
     <Compile Include="ItemTests.cs" />
     <Compile Include="ProjectionTest.cs" />

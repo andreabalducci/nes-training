@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using NUnit.Framework;
 using SimpleEventStore.Domain;
 using SimpleEventStore.Domain.Events;
 using SimpleEventStore.Eventstore;
-using SimpleEventStore.Query;
 
 namespace SimpleEventStore.Tests
 {
@@ -123,46 +121,6 @@ namespace SimpleEventStore.Tests
             Assert.AreEqual(150, item.InStock);
             Assert.AreEqual(1, item.Events.Count);
             Assert.IsTrue(item.Events[0] is ItemLoaded);
-        }
-
-        [Test]
-        public void genera_elenco_di_articoli()
-        {
-            var item = new Item(TestConfig.Id, "ART1", "Paste per la colazione", "NR", 90);
-
-            item.Load(100);
-            item.Unload(50);
-
-            item.Unload(5000);
-
-            var item2 = new Item(Guid.NewGuid().ToString(), "ART2", "Caffè", "GR", 100);
-
-            item2.Disable();
-
-            var projectionClient = new ItemsProjectionClient();
-            var repository = new Repository(
-                TestConfig.TestStore, 
-                projectionClient.Observe
-            );
-
-            repository.Save(item);
-            repository.Save(item2);
-
-
-            foreach (var itemModel in projectionClient.Items)
-            {
-                Debug.WriteLine("ItemModel: {0} [{1}]", itemModel.Description, itemModel.Sku);
-            }
-
-            foreach (var itemModel in projectionClient.ItemsUnderMinimunAvailability)
-            {
-                Debug.WriteLine("ItemModel sottoscorta: {0} [{1}]", itemModel.Description, itemModel.Sku);
-            }
-
-            foreach (var itemModel in projectionClient.FailedPickings)
-            {
-                Debug.WriteLine("ItemModel sottoscorta: {0} [{1}] - InStock richiesta {2}", itemModel.Description, itemModel.Sku , itemModel.Quantity);
-            }
         }
     }
 }
