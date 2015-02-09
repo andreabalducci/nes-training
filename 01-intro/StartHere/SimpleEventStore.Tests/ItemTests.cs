@@ -16,10 +16,8 @@ namespace SimpleEventStore.Tests
         public void create_item()
         {
             var item = new Item(TestConfig.Id, "001", "SSD Crucial M4 256GB", "NR", 50);
-            item.Load(100);
-            item.Unload(30);
 
-            Assert.AreEqual(3, item.Events.Count);
+            Assert.AreEqual(1, item.Events.Count);
         }
 
         [Test]
@@ -88,7 +86,8 @@ namespace SimpleEventStore.Tests
             Assert.IsNotNull(item);
             Assert.AreEqual(TestConfig.Id, item.Id);
 
-            Assert.AreEqual(100, item.InStock);
+            Assert.AreEqual(0, item.InStock);
+            Assert.IsTrue(item.Disabled);
         }
 
         [Test]
@@ -96,12 +95,6 @@ namespace SimpleEventStore.Tests
         {
             var item = new Item(TestConfig.Id, "SN0001", "Snacks", "NR", 100);
 
-            item.Load(100);
-            item.Load(50);
-
-            Assert.AreEqual(150, item.InStock);
-            item.Unload(50);
-            Assert.AreEqual(100, item.InStock);
             item.Disable();
             Assert.IsTrue(item.Disabled);
 
@@ -109,18 +102,6 @@ namespace SimpleEventStore.Tests
             repository.Save(item);
 
             // check json file
-        }
-
-
-        [Test]
-        public void test_carico()
-        {
-            var item = new Item();
-            item.Load(150);
-
-            Assert.AreEqual(150, item.InStock);
-            Assert.AreEqual(1, item.Events.Count);
-            Assert.IsTrue(item.Events[0] is ItemLoaded);
         }
     }
 }
