@@ -5,9 +5,11 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Intro", "01 Intro", "{7086B47F-1B74-4F26-BEB9-34AFF182A858}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleEventStore", "01-intro\SimpleEventStore\SimpleEventStore.csproj", "{361C9332-4EF3-406B-98BB-A1CC2A658085}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleEventStore", "01-intro\FinishedSample\SimpleEventStore\SimpleEventStore.csproj", "{361C9332-4EF3-406B-98BB-A1CC2A658085}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleEventStore.Tests", "01-intro\SimpleEventStore.Tests\SimpleEventStore.Tests.csproj", "{06F1CFFC-7E10-4B41-87A5-9480AFEFF680}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleEventStore.Tests", "01-intro\FinishedSample\SimpleEventStore.Tests\SimpleEventStore.Tests.csproj", "{06F1CFFC-7E10-4B41-87A5-9480AFEFF680}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Finished Sample", "Finished Sample", "{FBA436EF-3F81-42BC-BD6E-9EA4951B819F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,7 +30,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{361C9332-4EF3-406B-98BB-A1CC2A658085} = {7086B47F-1B74-4F26-BEB9-34AFF182A858}
-		{06F1CFFC-7E10-4B41-87A5-9480AFEFF680} = {7086B47F-1B74-4F26-BEB9-34AFF182A858}
+		{361C9332-4EF3-406B-98BB-A1CC2A658085} = {FBA436EF-3F81-42BC-BD6E-9EA4951B819F}
+		{06F1CFFC-7E10-4B41-87A5-9480AFEFF680} = {FBA436EF-3F81-42BC-BD6E-9EA4951B819F}
+		{FBA436EF-3F81-42BC-BD6E-9EA4951B819F} = {7086B47F-1B74-4F26-BEB9-34AFF182A858}
 	EndGlobalSection
 EndGlobal
