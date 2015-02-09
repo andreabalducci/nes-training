@@ -10,18 +10,6 @@ using MongoDB.Driver.Builders;
 
 namespace Bookings.Domain.Projections
 {
-    public class RisorsaPrenotabileReadModel
-    {
-        public Guid Id { get; set; }
-        public string Description { get; set; }
-    }
-
-    public class InfoRisorsaReadModel
-    {
-        public Guid Id { get; set; }
-        public string Description { get; set; }
-    }
-
     public class ListaDelleRisorsePrenotabili :
         IMessageHandler<RisorsaCreata>,
         IMessageHandler<RisorsaResaPrenotabile>,

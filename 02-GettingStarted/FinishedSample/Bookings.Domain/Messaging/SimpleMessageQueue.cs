@@ -8,19 +8,7 @@ using Bookings.Domain.Support;
 
 namespace Bookings.Domain.Messaging
 {
-	public class TooManyMessageHandlersException : Exception
-	{
-		public Type MessageType { get; private set; }
-		public IEnumerable<Type> HandlerTypes { get; private set; }
-
-		public TooManyMessageHandlersException(Type messageType, IEnumerable<Type> handlerTypes)
-		{
-			MessageType = messageType;
-			HandlerTypes = handlerTypes;
-		}
-	}
-
-	/// <summary>
+    /// <summary>
 	/// Single Threaded message queue.
 	/// Just for the samples to avoid a real service bus
 	/// </summary>

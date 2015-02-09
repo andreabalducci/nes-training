@@ -1,5 +1,4 @@
-﻿using System;
-using CommonDomain.Core;
+﻿using CommonDomain.Core;
 
 namespace Bookings.Tests.IntegrationsTests
 {
@@ -37,19 +36,4 @@ namespace Bookings.Tests.IntegrationsTests
 
         }
 	}
-
-    public class ItemId
-    {
-        public Guid Id { get; set; }
-
-        public ItemId()
-        {
-            
-        }
-
-        public ItemId(Guid id)
-        {
-            Id = id;
-        }
-    }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
@@ -53,20 +52,6 @@ namespace Bookings.Domain.Projections
                     Id = message.Id,
                     Description = message.Description
                 });
-        }
-    }
-
-    public class InfoRisorsaReadModel2
-    {
-        public Guid Id { get; set; }
-        public string Description { get; set; }
-        public bool Ritirata { get; set; }
-
-        public List<Guid> Eventi { get; set; }
-
-        public InfoRisorsaReadModel2()
-        {
-            this.Eventi = new List<Guid>();
         }
     }
 }
