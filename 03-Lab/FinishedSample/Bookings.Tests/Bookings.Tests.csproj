@@ -35,6 +35,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\..\packages\Castle.Core.3.2.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\..\packages\Castle.Windsor.3.2.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="Machine.Specifications">
       <HintPath>..\..\..\packages\Machine.Specifications.0.9.1\lib\net40\Machine.Specifications.dll</HintPath>
     </Reference>
@@ -64,6 +70,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Rebus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Rebus.0.79.0\lib\NET45\Rebus.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebus.Castle.Windsor">
+      <HintPath>..\..\..\packages\Rebus.Castle.Windsor.0.79.0\lib\NET45\Rebus.Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebus.MongoDb">
+      <HintPath>..\..\..\packages\Rebus.MongoDb.0.79.0\lib\NET45\Rebus.MongoDb.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -78,6 +94,7 @@
     <Compile Include="BookingContext\BookableItemSpecs\BookableSpec.cs" />
     <Compile Include="BookingContext\RichiestaDiPrenotazioneSpecs\RichiestaDiPrenotazioneSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RebusTests\RebusPingPongTest.cs" />
     <Compile Include="TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
