@@ -37,8 +37,8 @@ namespace Bookings.ProcessManager.Support
                                              Wireup.Init()
                                                    .UsingMongoPersistence("pm", new DocumentObjectSerializer())
                                                    .InitializeStorageEngine()
-//                                                    .UsingSynchronousDispatchScheduler(k.Resolve<IDispatchCommits>())
-                                                   .UsingAsynchronousDispatchScheduler(k.Resolve<IDispatchCommits>())
+                                                    .UsingSynchronousDispatchScheduler(k.Resolve<IDispatchCommits>())
+//                                                   .UsingAsynchronousDispatchScheduler(k.Resolve<IDispatchCommits>())
                                                    .Build()
                     )
                 );

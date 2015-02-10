@@ -21,7 +21,6 @@ namespace Bookings.Domain.BookingContext.BookableItem
         public BookableItem(BookableItemId id, string description)
             : this()
         {
-            _id = id;
             RaiseEvent(new BookableItemCreated(id, description));
         }
 
@@ -32,7 +31,8 @@ namespace Bookings.Domain.BookingContext.BookableItem
 
         public void Apply(BookableItemCreated evt)
         {
-            this.Id = evt.Id.Id;
+            _id = evt.Id;
+            Id = evt.Id.Id;
         }
 
         public void Apply(BookableItemDeleted evt)

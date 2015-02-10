@@ -81,6 +81,7 @@
       <HintPath>..\..\..\packages\Rebus.MongoDb.0.79.0\lib\NET45\Rebus.MongoDb.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
@@ -96,6 +97,7 @@
     <Compile Include="BookingContext\RichiestaDiPrenotazioneSpecs\RichiestaDiPrenotazioneSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RebusTests\RebusPingPongTest.cs" />
+    <Compile Include="Storage\DropAll.cs" />
     <Compile Include="TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
