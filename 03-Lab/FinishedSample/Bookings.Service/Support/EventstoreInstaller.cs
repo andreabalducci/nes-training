@@ -128,13 +128,12 @@ namespace Bookings.Service.Support
                     .ImplementedBy<ConflictDetector>()
                     .LifestyleTransient(),
 
-                Component.For<IStoreEvents>()
-                         .UsingFactoryMethod(k =>
-                                             Wireup.Init()
-                                                   .UsingMongoPersistence("events", new DocumentObjectSerializer())
-                                                   .InitializeStorageEngine()
-                                                   .UsingAsynchronousDispatchScheduler(k.Resolve<IDispatchCommits>())
-                                                   .Build()
+                Component.For<IStoreEvents>().UsingFactoryMethod(k =>
+                        Wireup.Init()
+                            .UsingMongoPersistence("events", new DocumentObjectSerializer())
+                            .InitializeStorageEngine()
+                            .UsingSynchronousDispatchScheduler(k.Resolve<IDispatchCommits>())
+                            .Build()
                     )
                 );
 
