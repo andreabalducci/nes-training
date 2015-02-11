@@ -9,11 +9,11 @@ using Machine.Specifications;
 
 namespace Bookings.Tests.DomainTests
 {
-    [Subject(typeof(Risorsa))]
+    [Subject(typeof(Resource))]
     public class quando_creo_una_risorsa
     {
         static readonly Guid _id = new Guid("4534C386-5284-4203-9AA3-87B60A172764");
-        static Risorsa item;
+        static Resource item;
 
         Establish context = () =>
         {
@@ -22,15 +22,15 @@ namespace Bookings.Tests.DomainTests
 
         Because of = () =>
         {
-            item = new Risorsa(_id, "MacBook Pro 13\"");
+            item = new Resource(_id, "MacBook Pro 13\"");
         };
 
         // transizioni di stato
         It ha_un_identificativo = () => item.Id.ShouldBeLike(_id);
         It la_descrizione_impostata = () => item.Description.ShouldBeLike("MacBook Pro 13\"");
-        It questa_non_è_prenotabile = () => item.Prenotabile.ShouldBeFalse();
+        It questa_non_è_prenotabile = () => item.Available.ShouldBeFalse();
 
         // eventi
-        It l_evento_di_crazione_e_stato_scatenato = () => item.RaisedEvent<RisorsaCreata>().ShouldBeTrue();
+        It l_evento_di_crazione_e_stato_scatenato = () => item.RaisedEvent<ResourceCreated>().ShouldBeTrue();
     }
 }

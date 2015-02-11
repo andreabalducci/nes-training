@@ -3,11 +3,11 @@ using Bookings.Domain.Messaging;
 
 namespace Bookings.Domain.BookingContenxt.Events
 {
-    public class RisorsaResaPrenotabile : IMessage
+    public class ResourceHasBeenSetUnavailable: IMessage
     {
         public Guid Id { get; set; }
 
-        public RisorsaResaPrenotabile(Guid id)
+        public ResourceHasBeenSetUnavailable(Guid id)
         {
             Id = id;
         }

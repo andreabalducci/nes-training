@@ -8,9 +8,9 @@ using MongoDB.Driver.Builders;
 namespace Bookings.Domain.Query
 {
     public class ListaDelleRisorsePrenotabili :
-        IMessageHandler<RisorsaCreata>,
-        IMessageHandler<RisorsaResaPrenotabile>,
-        IMessageHandler<RisorsaResaNonPrenotabile>
+        IMessageHandler<ResourceCreated>,
+        IMessageHandler<ResourceHasBeenSetAvailable>,
+        IMessageHandler<ResourceHasBeenSetUnavailable>
     {
         private MongoCollection<RisorsaPrenotabileReadModel> _collection;
         private MongoCollection<InfoRisorsaReadModel> _collectionInfoRisorsa;
@@ -28,7 +28,7 @@ namespace Bookings.Domain.Query
             _collectionInfoRisorsa.Drop();
         }
 
-        public void Handle(RisorsaCreata message)
+        public void Handle(ResourceCreated message)
         {
             _collectionInfoRisorsa.Save(new InfoRisorsaReadModel
                 {
@@ -37,7 +37,7 @@ namespace Bookings.Domain.Query
                 });
         }
 
-        public void Handle(RisorsaResaPrenotabile message)
+        public void Handle(ResourceHasBeenSetAvailable message)
         {
             var info = _collectionInfoRisorsa.FindOneById(message.Id);
             if (info == null)
@@ -46,7 +46,7 @@ namespace Bookings.Domain.Query
             _collection.Save(new RisorsaPrenotabileReadModel {Id = message.Id, Description = info.Description});
         }
 
-        public void Handle(RisorsaResaNonPrenotabile message)
+        public void Handle(ResourceHasBeenSetUnavailable message)
         {
             _collection.Remove(Query<RisorsaPrenotabileReadModel>.Where(x=>x.Id == message.Id));
         }

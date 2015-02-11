@@ -10,18 +10,18 @@ namespace Bookings.Tests.IntegrationTests
         [Test]
         public void crea_lista()
         {
-            var pc = new Risorsa(Guid.NewGuid(), "Pc Fisso");
-            var portatitle = new Risorsa(Guid.NewGuid(), "Pc Portatile");
-            var proiettore = new Risorsa(Guid.NewGuid(), "Proiettore");
+            var pc = new Resource(Guid.NewGuid(), "Pc Fisso");
+            var portatitle = new Resource(Guid.NewGuid(), "Pc Portatile");
+            var proiettore = new Resource(Guid.NewGuid(), "Proiettore");
 
-            pc.RendiPrenotabile();
-            proiettore.RendiPrenotabile();
-            portatitle.RendiPrenotabile();
-            portatitle.RendiNonPrenotabile();
+            pc.MakeAvailable();
+            proiettore.MakeAvailable();
+            portatitle.MakeAvailable();
+            portatitle.MakeUnavailable();
 
-            pc.Prendi();
-            pc.Restituisci();
-            proiettore.Prendi();
+            pc.Lend();
+            pc.Return();
+            proiettore.Lend();
 
 
             Repository.Save(pc, Guid.NewGuid(), null);

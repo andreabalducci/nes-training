@@ -7,9 +7,9 @@ using MongoDB.Driver;
 namespace Bookings.Domain.Query
 {
     public class ListaDelleRisorseRitirate:
-        IMessageHandler<RisorsaPresa>,
-        IMessageHandler<RisorsaRestituita>,
-        IMessageHandler<RisorsaCreata>
+        IMessageHandler<ResourceLent>,
+        IMessageHandler<ResourceReturned>,
+        IMessageHandler<ResourceCreated>
     {
         private MongoCollection<InfoRisorsaReadModel2> _collection;
 
@@ -24,7 +24,7 @@ namespace Bookings.Domain.Query
             _collection.Drop();
         }
 
-        public void Handle(RisorsaPresa message)
+        public void Handle(ResourceLent message)
         {
             var item = _collection.FindOneById(message.Id);
             if (item == null)
@@ -34,7 +34,7 @@ namespace Bookings.Domain.Query
             _collection.Save(item);
         }
 
-        public void Handle(RisorsaRestituita message)
+        public void Handle(ResourceReturned message)
         {
             var item = _collection.FindOneById(message.Id);
             if (item == null)
@@ -43,7 +43,7 @@ namespace Bookings.Domain.Query
             _collection.Save(item);
         }
 
-        public void Handle(RisorsaCreata message)
+        public void Handle(ResourceCreated message)
         {
             _collection.Save(new InfoRisorsaReadModel2()
                 {

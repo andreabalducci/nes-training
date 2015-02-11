@@ -3,11 +3,11 @@ using Bookings.Domain.Messaging;
 
 namespace Bookings.Domain.BookingContenxt.Events
 {
-    public class RisorsaDismessa : IMessage
+    public class ResourceReturned : IMessage
     {
         public Guid Id { get; set; }
 
-        public RisorsaDismessa(Guid id)
+        public ResourceReturned(Guid id)
         {
             Id = id;
         }

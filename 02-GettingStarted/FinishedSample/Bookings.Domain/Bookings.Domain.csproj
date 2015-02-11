@@ -54,13 +54,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BookingContenxt\Risorsa.cs" />
-    <Compile Include="BookingContenxt\Events\RisorsaCreata.cs" />
-    <Compile Include="BookingContenxt\Events\RisorsaDismessa.cs" />
-    <Compile Include="BookingContenxt\Events\RisorsaPresa.cs" />
-    <Compile Include="BookingContenxt\Events\RisorsaResaNonPrenotabile.cs" />
-    <Compile Include="BookingContenxt\Events\RisorsaResaPrenotabile.cs" />
-    <Compile Include="BookingContenxt\Events\RisorsaRestituita.cs" />
+    <Compile Include="BookingContenxt\Resource.cs" />
+    <Compile Include="BookingContenxt\Events\ResourceCreated.cs" />
+    <Compile Include="BookingContenxt\Events\ResourceDismissed.cs" />
+    <Compile Include="BookingContenxt\Events\ResourceLent.cs" />
+    <Compile Include="BookingContenxt\Events\ResourceHasBeenSetUnavailable.cs" />
+    <Compile Include="BookingContenxt\Events\ResourceHasBeenSetAvailable.cs" />
+    <Compile Include="BookingContenxt\Events\ResourceReturned.cs" />
     <Compile Include="Messaging\IBus.cs" />
     <Compile Include="Messaging\IMessage.cs" />
     <Compile Include="Messaging\IMessageHandler.cs" />

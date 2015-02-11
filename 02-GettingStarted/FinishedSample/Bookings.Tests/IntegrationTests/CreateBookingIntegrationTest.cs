@@ -10,19 +10,19 @@ namespace Bookings.Tests.IntegrationTests
     [TestFixture]
     public class CreateBookingIntegrationTest : AbstractIntegrationTest
     {
-		public class BookableItemCreatedEventHandler : IMessageHandler<RisorsaCreata>
+		public class BookableItemCreatedEventHandler : IMessageHandler<ResourceCreated>
 		{
 			public static int Counter;
-			public void Handle(RisorsaCreata message)
+			public void Handle(ResourceCreated message)
 			{
 				Counter++;
 				Debug.WriteLine("item has been created!");
 			}
 		}
 
-	    public class BookableItemCreatedEventHandler2 : IMessageHandler<RisorsaCreata>
+	    public class BookableItemCreatedEventHandler2 : IMessageHandler<ResourceCreated>
 	    {
-		    public void Handle(RisorsaCreata message)
+		    public void Handle(ResourceCreated message)
 		    {
 			    Debug.WriteLine("Second handler");
 		    }
@@ -39,10 +39,10 @@ namespace Bookings.Tests.IntegrationTests
 	                Description = "Laptop"
 	            };
 
-	        var item = new Risorsa(cmd.ResourceId, cmd.Description);
+	        var item = new Resource(cmd.ResourceId, cmd.Description);
             Repository.Save(item, cmd.CommandId, k => k.Add("key", "secret"));
 
-            var loaded = Repository.GetById<Risorsa>(cmd.ResourceId);
+            var loaded = Repository.GetById<Resource>(cmd.ResourceId);
 
 		    FlushExecutionQueue();
 
