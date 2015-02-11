@@ -19,20 +19,4 @@ namespace Bookings.Shared.Domain.BookingContext.BookableItem
             Id = id;
         }
     }
-
-    public class PrenotazioneId
-    {
-        protected PrenotazioneId()
-        {
-        }
-
-        public Guid Id { get; set; }
-        public BookableItemId BookableItemId { get; set; }
-
-        public PrenotazioneId(Guid id, BookableItemId bookableItemId)
-        {
-            Id = id;
-            BookableItemId = bookableItemId;
-        }
-    }
 }

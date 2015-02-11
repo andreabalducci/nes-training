@@ -55,21 +55,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookingContenxt\Risorsa.cs" />
-    <Compile Include="BookingContenxt\RisorsaCreata.cs" />
-    <Compile Include="BookingContenxt\RisorsaDismessa.cs" />
-    <Compile Include="BookingContenxt\RisorsaPresa.cs" />
-    <Compile Include="BookingContenxt\RisorsaResaNonPrenotabile.cs" />
-    <Compile Include="BookingContenxt\RisorsaResaPrenotabile.cs" />
-    <Compile Include="BookingContenxt\RisorsaRestituita.cs" />
+    <Compile Include="BookingContenxt\Events\RisorsaCreata.cs" />
+    <Compile Include="BookingContenxt\Events\RisorsaDismessa.cs" />
+    <Compile Include="BookingContenxt\Events\RisorsaPresa.cs" />
+    <Compile Include="BookingContenxt\Events\RisorsaResaNonPrenotabile.cs" />
+    <Compile Include="BookingContenxt\Events\RisorsaResaPrenotabile.cs" />
+    <Compile Include="BookingContenxt\Events\RisorsaRestituita.cs" />
     <Compile Include="Messaging\IBus.cs" />
     <Compile Include="Messaging\IMessage.cs" />
     <Compile Include="Messaging\IMessageHandler.cs" />
     <Compile Include="Messaging\TooManyMessageHandlersException.cs" />
-    <Compile Include="Projections\InfoRisorsaReadModel.cs" />
-    <Compile Include="Projections\InfoRisorsaReadModel2.cs" />
-    <Compile Include="Projections\ListaDelleRisorsePrenotabili.cs" />
-    <Compile Include="Projections\ListaDelleRisorseRitirate.cs" />
-    <Compile Include="Projections\RisorsaPrenotabileReadModel.cs" />
+    <Compile Include="Query\InfoRisorsaReadModel.cs" />
+    <Compile Include="Query\InfoRisorsaReadModel2.cs" />
+    <Compile Include="Query\ListaDelleRisorsePrenotabili.cs" />
+    <Compile Include="Query\ListaDelleRisorseRitirate.cs" />
+    <Compile Include="Query\RisorsaPrenotabileReadModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\AggregateFactory.cs" />
     <Compile Include="Support\Bootstrapper.cs" />

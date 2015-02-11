@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Bookings.Shared.Domain.BookingContext.BookableItem.Events;
@@ -9,12 +8,6 @@ using MongoDB.Driver.Builders;
 
 namespace Bookings.Shared.Projections
 {
-    public class BookableItemInListReadModel
-    {
-        public Guid Id { get; set; }
-        public string Description { get; set; }
-    }
-
     public class BookableItemsListProjection : 
         IEventHandler<BookableItemCreated>,
         IEventHandler<BookableItemDeleted>

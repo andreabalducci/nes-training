@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bookings.Domain.BookingContext.BookableItem;
 using Bookings.Domain.BookingContext.RichiestaDiPrenotazione;
 using Bookings.Shared.Domain.BookingContext.BookableItem.Commands;
 using Bookings.Shared.Domain.BookingContext.RichiestaDiPrenotazione;
@@ -36,23 +35,6 @@ namespace Bookings.Service.CommandHandlers
             var rdp = Repository.GetById<RichiestaDiPrenotazione>(message.RichiestaDiPrenotazioneId.Id);
             rdp.Respingi();
             Repository.Save(rdp, message.CommandId);
-        }
-    }
-
-    public class BookableItemCommandHandler : IHandleMessages<RiservaBookableItem>
-    {
-        public BookableItemCommandHandler(IRepository repository)
-        {
-            Repository = repository;
-        }
-
-        protected IRepository Repository { get; set; }
-
-        public void Handle(RiservaBookableItem message)
-        {
-            BookableItem risorsa = Repository.GetById<BookableItem>(message.Itemid.Id);
-            risorsa.Riserva(message.RichiestaDiPrenotazioneId, message.Da, message.A);
-            Repository.Save(risorsa, message.CommandId);
         }
     }
 }

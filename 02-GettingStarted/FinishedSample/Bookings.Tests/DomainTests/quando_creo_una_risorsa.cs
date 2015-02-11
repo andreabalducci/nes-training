@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Bookings.Domain.BookingContenxt;
+using Bookings.Domain.BookingContenxt.Events;
 using Machine.Specifications;
 
 // ReSharper disable InconsistentNaming

@@ -8,12 +8,6 @@ using MongoDB.Driver.Linq;
 
 namespace Bookings.Client.Client
 {
-    public interface IReadModel
-    {
-        IList<BookableItemInListReadModel> ListItems();
-        IList<ListaRichiesteDiPrenotazioneReadModel> ListRichiesteDiPrenotazione();
-    }
-
     public class ReadModel : IReadModel
     {
         private readonly MongoDatabase _readModelDb;

@@ -14,11 +14,6 @@ using Rebus;
 
 namespace Bookings.Client.Client
 {
-    public interface IClient
-    {
-        void Run();
-    }
-
     class BookingsClient : IClient, IHandleMessages<ReadModelUpdatedMessage>
     {
         private readonly IBus _bus;

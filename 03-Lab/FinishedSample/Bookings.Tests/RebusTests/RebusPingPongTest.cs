@@ -76,12 +76,4 @@ namespace Bookings.Tests.RebusTests
             Thread.Sleep(1000);
         }
     }
-
-    public class MessageOwnership : IDetermineMessageOwnership
-    {
-        public string GetEndpointFor(Type messageType)
-        {
-            return "rebus.test.input";
-        }
-    }
 }

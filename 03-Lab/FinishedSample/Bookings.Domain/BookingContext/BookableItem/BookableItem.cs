@@ -79,24 +79,4 @@ namespace Bookings.Domain.BookingContext.BookableItem
             Prenotazioni.RemoveAll(x => x.PrenotazioneId.Id == evt.PrenotazioneId.Id);
         }
     }
-
-    public class Prenotazione
-    {
-        public Prenotazione(PrenotazioneId prenotazioneId, DateTime da, DateTime a)
-        {
-            PrenotazioneId = prenotazioneId;
-            Da = da;
-            A = a;
-        }
-
-        protected Prenotazione()
-        {
-        }
-
-        public DateTime Da { get; set; }
-        public DateTime A { get; set; }
-        public PrenotazioneId PrenotazioneId { get; set; }    
-    }
-
-  
 }

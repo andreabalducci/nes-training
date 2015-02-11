@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Bookings.Domain.BookingContenxt.Events;
 using CommonDomain.Core;
 
 namespace Bookings.Domain.BookingContenxt

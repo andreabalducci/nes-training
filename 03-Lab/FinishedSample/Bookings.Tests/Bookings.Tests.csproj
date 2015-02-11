@@ -93,11 +93,17 @@
   <ItemGroup>
     <Compile Include="Advanced\RebuildReadModel.cs" />
     <Compile Include="Advanced\ReplayEvents.cs" />
-    <Compile Include="BookingContext\BookableItemSpecs\BookableSpec.cs" />
-    <Compile Include="BookingContext\RichiestaDiPrenotazioneSpecs\RichiestaDiPrenotazioneSpecs.cs" />
+    <Compile Include="BookingContext\BookableItemSpecs\AbstractSpecification.cs" />
+    <Compile Include="BookingContext\BookableItemSpecs\quando_un_bookableItem_è_libero.cs" />
+    <Compile Include="BookingContext\BookableItemSpecs\quando_un_bookableItem_è_occupato.cs" />
+    <Compile Include="BookingContext\BookableItemSpecs\when_a_bookableItem_is_created.cs" />
+    <Compile Include="BookingContext\RichiestaDiPrenotazioneSpecs\quando_una_richiesta_di_prenotazione_viene_approvata.cs" />
+    <Compile Include="BookingContext\RichiestaDiPrenotazioneSpecs\quando_una_richiesta_di_prenotazione_viene_creata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RebusTests\MessageOwnership.cs" />
     <Compile Include="RebusTests\RebusPingPongTest.cs" />
     <Compile Include="Storage\DropAll.cs" />
+    <Compile Include="Storage\MongoHelper.cs" />
     <Compile Include="TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>

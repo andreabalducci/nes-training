@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
@@ -9,7 +8,6 @@ using Bookings.Shared.Messaging;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using Newtonsoft.Json;
 using Rebus;
 using Rebus.Castle.Windsor;
 using Rebus.Configuration;
@@ -48,29 +46,6 @@ namespace Bookings.Client.Support
             bus.Subscribe<ReadModelUpdatedMessage>();
             bus.Subscribe<RichiestaDiPrenotazioneCreata>();
             bus.Subscribe<RichiestaDiPrenotazioneApprovata>();
-        }
-    }
-
-    public class HandlerNotifier : IHandleMessages<ReadModelUpdatedMessage>
-    {
-        public void Handle(ReadModelUpdatedMessage message)
-        {
-            Console.WriteLine("\nReadmodel updated:\n{0}\n", JsonConvert.SerializeObject(message, Formatting.Indented));
-        }
-    }
-
-    public class RichiestaDiPrenotazioneCreataNotifier : 
-        IHandleMessages<RichiestaDiPrenotazioneCreata>,
-        IHandleMessages<RichiestaDiPrenotazioneApprovata>
-    {
-        public void Handle(RichiestaDiPrenotazioneCreata message)
-        {
-            Console.WriteLine("Richiesta di '{0}' creata!", message.Utente);
-        }
-
-        public void Handle(RichiestaDiPrenotazioneApprovata message)
-        {
-            Console.WriteLine("Richiesta di prenotazione '{0}' approvata!", message.Id);
         }
     }
 }

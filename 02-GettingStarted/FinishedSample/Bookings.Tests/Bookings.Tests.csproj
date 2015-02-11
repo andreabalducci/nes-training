@@ -72,22 +72,22 @@
     <Compile Include="DomainTests\quando_la_rendo_non_prenotabile.cs" />
     <Compile Include="DomainTests\quando_la_rendo_prenotabile.cs" />
     <Compile Include="DomainTests\quando_la_restituisco.cs" />
-    <Compile Include="IntegrationsTests\CommandHandlerTest.cs" />
-    <Compile Include="IntegrationsTests\CreateItemCommand.cs" />
-    <Compile Include="IntegrationsTests\CreateItemCommandHandler.cs" />
-    <Compile Include="IntegrationsTests\crea_lista_delle_risorse_prenotabili.cs" />
-    <Compile Include="IntegrationsTests\Item.cs" />
-    <Compile Include="IntegrationsTests\ItemCreated.cs" />
-    <Compile Include="IntegrationsTests\ItemDeleted.cs" />
-    <Compile Include="IntegrationsTests\ItemId.cs" />
-    <Compile Include="IntegrationsTests\ItemLoaded.cs" />
-    <Compile Include="IntegrationsTests\ItemProjection.cs" />
-    <Compile Include="IntegrationsTests\ItemReadModel.cs" />
+    <Compile Include="IntegrationTests\CommandHandlerTest.cs" />
+    <Compile Include="IntegrationTests\CreateItemCommand.cs" />
+    <Compile Include="IntegrationTests\CreateItemCommandHandler.cs" />
+    <Compile Include="IntegrationTests\crea_lista_delle_risorse_prenotabili.cs" />
+    <Compile Include="IntegrationTests\Item.cs" />
+    <Compile Include="IntegrationTests\ItemCreated.cs" />
+    <Compile Include="IntegrationTests\ItemDeleted.cs" />
+    <Compile Include="IntegrationTests\ItemId.cs" />
+    <Compile Include="IntegrationTests\ItemLoaded.cs" />
+    <Compile Include="IntegrationTests\ItemProjection.cs" />
+    <Compile Include="IntegrationTests\ItemReadModel.cs" />
     <Compile Include="MessagingTests\SimpleMessageQueueTests.cs" />
     <Compile Include="DomainTests\quando_creo_una_risorsa.cs" />
     <Compile Include="DomainTests\TestHelper.cs" />
-    <Compile Include="IntegrationsTests\AbstractIntegrationTest.cs" />
-    <Compile Include="IntegrationsTests\CreateBookingIntegrationTest.cs" />
+    <Compile Include="IntegrationTests\AbstractIntegrationTest.cs" />
+    <Compile Include="IntegrationTests\CreateBookingIntegrationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

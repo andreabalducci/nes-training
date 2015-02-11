@@ -1,5 +1,6 @@
 ﻿using System;
 using Bookings.Domain.BookingContenxt;
+using Bookings.Domain.BookingContenxt.Events;
 using Machine.Specifications;
 
 namespace Bookings.Tests.DomainTests

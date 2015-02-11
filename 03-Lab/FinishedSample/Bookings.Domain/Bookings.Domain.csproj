@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookingContext\BookableItem\BookableItem.cs" />
+    <Compile Include="BookingContext\BookableItem\Prenotazione.cs" />
     <Compile Include="BookingContext\RichiestaDiPrenotazione\RichiestaDiPrenotazione.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
