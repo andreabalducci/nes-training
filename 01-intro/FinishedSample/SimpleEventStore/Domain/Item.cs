@@ -38,8 +38,14 @@ namespace SimpleEventStore.Domain
             else
             {
                 RaiseEvent(new ItemUnloaded(Id, quantity));
+
+                //
+                // safety stock level check 
+                //
+                // event or projection?
+                //
                 if (SafetyStockLevel > InStock)
-                {
+                {   
                     RaiseEvent(new ItemBelowSafetyStockLevel(Id));
                 }
             }
