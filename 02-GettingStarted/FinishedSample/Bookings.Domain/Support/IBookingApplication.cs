@@ -7,7 +7,7 @@ namespace Bookings.Domain.Support
     {
         void Stop();
         void Accept(IMessage message);
-        bool HasPendingMessages { get; }
+        void FlushExecutionQueue();
         IRepository CreateRepository();
     }
 }

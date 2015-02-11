@@ -14,7 +14,7 @@ namespace Bookings.Tests.IntegrationTests
 
 		    var aggregateId = new ItemId(new Guid("F44F6000-1900-4B46-98F4-C59F752A5810"));
             SendCommand(new CreateItemCommand(aggregateId, "Articolo 1"));
-			WaitForPendingMessages();
+			FlushExecutionQueue();
 			Assert.AreEqual(1, ItemProjection.Counter);
 		}
 	}

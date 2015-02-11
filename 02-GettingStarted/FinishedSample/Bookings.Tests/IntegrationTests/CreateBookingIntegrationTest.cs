@@ -44,7 +44,7 @@ namespace Bookings.Tests.IntegrationTests
 
             var loaded = Repository.GetById<Risorsa>(cmd.ResourceId);
 
-		    WaitForPendingMessages();
+		    FlushExecutionQueue();
 
             Assert.AreEqual(1, loaded.Version);
             Assert.AreEqual(item.Description, loaded.Description);

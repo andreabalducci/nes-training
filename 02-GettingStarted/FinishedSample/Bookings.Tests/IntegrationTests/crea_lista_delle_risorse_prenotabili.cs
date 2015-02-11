@@ -28,7 +28,7 @@ namespace Bookings.Tests.IntegrationTests
             Repository.Save(portatitle, Guid.NewGuid(), null);
             Repository.Save(proiettore, Guid.NewGuid(), null);
 
-            WaitForPendingMessages();
+            FlushExecutionQueue();
         }
     }
 }

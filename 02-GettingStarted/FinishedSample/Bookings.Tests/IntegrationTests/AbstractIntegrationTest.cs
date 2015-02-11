@@ -2,9 +2,7 @@
 using System.Threading;
 using Bookings.Domain.Messaging;
 using Bookings.Domain.Support;
-using CommonDomain.Core;
 using CommonDomain.Persistence;
-using CommonDomain.Persistence.EventStore;
 using MongoDB.Driver;
 using NUnit.Framework;
 
@@ -13,17 +11,25 @@ namespace Bookings.Tests.IntegrationTests
     public abstract class AbstractIntegrationTest
     {
         private IBookingApplication _application;
+        protected IRepository Repository { get; private set; }
 
         [TestFixtureSetUp]
         public void TestFixtureSetUp()
+        {
+            // clenaup
+            DropDb();
+
+            // startup
+            _application = new Bootstrapper("events").Start();
+            Repository = _application.CreateRepository();
+        }
+
+        private static void DropDb()
         {
             var events = ConfigurationManager.ConnectionStrings["events"].ConnectionString;
             var eventsUri = new MongoUrl(events);
             var client = new MongoClient(eventsUri);
             client.GetServer().GetDatabase(eventsUri.DatabaseName).Drop();
-
-            _application = new Bootstrapper("events").Start();
-            Repository = _application.CreateRepository();
         }
 
         [TestFixtureTearDown]
@@ -32,19 +38,14 @@ namespace Bookings.Tests.IntegrationTests
             _application.Stop();
         }
 
-		protected void WaitForPendingMessages()
+		protected void FlushExecutionQueue()
 	    {
-            while (_application.HasPendingMessages)
-			{
-				Thread.Sleep(100);
-			}
-	    }
+            _application.FlushExecutionQueue();
+        }
 
 		protected void SendCommand(IMessage message)
 		{
 			_application.Accept(message);
 		}
-
-	    protected IRepository Repository { get; private set; }
     }
 }

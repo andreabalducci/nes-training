@@ -28,18 +28,18 @@ namespace Bookings.Domain.Support
             _eventStoreConnectionString = eventStoreConnectionString;
         }
 
-        public bool HasPendingMessages
+        public void FlushExecutionQueue()
         {
-            get
+            while (_simpleMessageQueue.HasPendingMessages)
             {
-                return _simpleMessageQueue.HasPendingMessages();
+                Thread.Sleep(100);
             }
         }
 
         public IRepository CreateRepository()
         {
             return new EventStoreRepository(
-                _eventStore, 
+                _eventStore,
                 new AggregateFactory(),
                 new ConflictDetector()
             );
