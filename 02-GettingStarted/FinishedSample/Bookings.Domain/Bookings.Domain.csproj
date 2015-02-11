@@ -75,6 +75,7 @@
     <Compile Include="Support\Bootstrapper.cs" />
     <Compile Include="Messaging\SimpleMessageQueue.cs" />
     <Compile Include="Support\CommitsDispatcher.cs" />
+    <Compile Include="Support\IBookingApplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

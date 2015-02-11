@@ -4,67 +4,90 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Bookings.Domain.Messaging;
+using CommonDomain.Core;
+using CommonDomain.Persistence;
+using CommonDomain.Persistence.EventStore;
 using NEventStore;
 using NEventStore.Serialization;
 
 namespace Bookings.Domain.Support
 {
-	public class Bootstrapper
-	{
-		private readonly string _es_connectionString;
-		private IStoreEvents _eventstore;
-		private SimpleMessageQueue _simpleMessageQueue;
+    public class Bootstrapper : IBookingApplication
+    {
+        private readonly string _eventStoreConnectionString;
+        private IStoreEvents _eventStore;
+        private SimpleMessageQueue _simpleMessageQueue;
 
-		public IStoreEvents EventStore
-		{
-			get { return _eventstore; }
-		}
+        private IStoreEvents EventStore
+        {
+            get { return _eventStore; }
+        }
 
-		public Bootstrapper(string esConnectionString)
-		{
-			_es_connectionString = esConnectionString;
-		}
+        public Bootstrapper(string eventStoreConnectionString)
+        {
+            _eventStoreConnectionString = eventStoreConnectionString;
+        }
 
-		public bool HasPendingMessages()
-		{
-			return _simpleMessageQueue.HasPendingMessages();
-		}
+        public bool HasPendingMessages
+        {
+            get
+            {
+                return _simpleMessageQueue.HasPendingMessages();
+            }
+        }
 
-		public void Start()
-		{
-			StartMessageQueue();
-			StartEventStore();
-		}
+        public IRepository CreateRepository()
+        {
+            return new EventStoreRepository(
+                _eventStore, 
+                new AggregateFactory(),
+                new ConflictDetector()
+            );
+        }
 
-		public void Stop()
-		{
-			_eventstore.Dispose();
-			_simpleMessageQueue.Dispose();
-		}
+        public IBookingApplication Start()
+        {
+            StartMessageQueue();
+            CreateEventStore();
 
-		private void StartMessageQueue()
-		{
-			_simpleMessageQueue = new SimpleMessageQueue(10);
-			var assemblies =
-				AppDomain.CurrentDomain.GetAssemblies().Where(x => x.GetName().Name.StartsWith("Bookings")).ToArray();
+            return this;
+        }
 
-			foreach (var assembly in assemblies)
-			{
-				_simpleMessageQueue.RegisterAssembly(assembly);
-			}
-		}
+        public void Stop()
+        {
+            _eventStore.Dispose();
+            _simpleMessageQueue.Dispose();
+        }
 
-		private void StartEventStore()
-		{
-			_eventstore = Wireup.Init()
-								.UsingMongoPersistence(_es_connectionString, new DocumentObjectSerializer())
-								.InitializeStorageEngine()
-								.UsingSynchronousDispatchScheduler(new CommitsDispatcher(_simpleMessageQueue))
-								.Build();
-		}
+        private void StartMessageQueue()
+        {
+            _simpleMessageQueue = new SimpleMessageQueue(10);
+            var assemblies =
+                AppDomain.CurrentDomain.GetAssemblies().Where(x => x.GetName().Name.StartsWith("Bookings")).ToArray();
 
-		public IBus Bus {
-			get { return _simpleMessageQueue; }
-		}
-	}
+            foreach (var assembly in assemblies)
+            {
+                _simpleMessageQueue.RegisterAssembly(assembly);
+            }
+        }
+
+        private void CreateEventStore()
+        {
+            _eventStore = Wireup.Init()
+                                .UsingMongoPersistence(_eventStoreConnectionString, new DocumentObjectSerializer())
+                                .InitializeStorageEngine()
+                                .UsingSynchronousDispatchScheduler(new CommitsDispatcher(_simpleMessageQueue))
+                                .Build();
+        }
+
+        public void Accept(IMessage message)
+        {
+            Bus.Send(message);
+        }
+
+        private IBus Bus
+        {
+            get { return _simpleMessageQueue; }
+        }
+    }
 }
