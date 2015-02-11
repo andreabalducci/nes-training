@@ -88,6 +88,9 @@
     <Compile Include="DomainTests\TestHelper.cs" />
     <Compile Include="IntegrationTests\AbstractIntegrationTest.cs" />
     <Compile Include="IntegrationTests\CreateBookingIntegrationTest.cs" />
+    <Compile Include="NESTests\DropAll.cs" />
+    <Compile Include="NESTests\EvenstreamTests.cs" />
+    <Compile Include="NESTests\MongoHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
