@@ -2,9 +2,11 @@
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using Bookings.Service.QueryModel;
 using Bookings.Shared;
 using Bookings.Shared.Messaging;
 using Bookings.Shared.Support;
+using Castle.Facilities.Startable;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
@@ -57,6 +59,10 @@ namespace Bookings.Service.Support
                     .For<IDetectConflicts>()
                     .ImplementedBy<ConflictDetector>()
                     .LifestyleTransient(),
+
+                Component
+                    .For<ProjectionEngine>()
+                    .Start(),
 
                 Component.For<IStoreEvents>().UsingFactoryMethod(k =>
                         Wireup.Init()
