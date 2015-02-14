@@ -101,6 +101,8 @@
     <Compile Include="CommandHandlers\RichiediPrenotazioneCommandHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryModel\CheckpointTracker.cs" />
+    <Compile Include="QueryModel\CommitsDispatcher.cs" />
     <Compile Include="QueryModel\ProjectionEngine.cs" />
     <Compile Include="Support\AggregateFactory.cs" />
     <Compile Include="Support\Boostrapper.cs" />
