@@ -1,6 +1,6 @@
 ﻿using Bookings.Domain.Messaging;
 
-namespace Bookings.Tests.IntegrationTests
+namespace Bookings.Tests.IntegrationTests.Sample
 {
 	/// <summary>
 	/// TODO: fix

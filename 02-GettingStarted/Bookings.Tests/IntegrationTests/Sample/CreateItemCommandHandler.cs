@@ -1,7 +1,7 @@
 ﻿using Bookings.Domain.Messaging;
 using CommonDomain.Persistence;
 
-namespace Bookings.Tests.IntegrationTests
+namespace Bookings.Tests.IntegrationTests.Sample
 {
 	/// <summary>
 	/// TODO: fix

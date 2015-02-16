@@ -68,21 +68,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainTests\quando_la_dismetto.cs" />
-    <Compile Include="DomainTests\quando_la_prendo.cs" />
-    <Compile Include="DomainTests\quando_la_rendo_non_prenotabile.cs" />
-    <Compile Include="DomainTests\quando_la_rendo_prenotabile.cs" />
-    <Compile Include="DomainTests\quando_la_restituisco.cs" />
-    <Compile Include="IntegrationTests\CommandHandlerTest.cs" />
-    <Compile Include="IntegrationTests\CreateItemCommand.cs" />
-    <Compile Include="IntegrationTests\CreateItemCommandHandler.cs" />
+    <Compile Include="IntegrationTests\Sample\CommandHandlerTest.cs" />
+    <Compile Include="IntegrationTests\Sample\CreateItemCommand.cs" />
+    <Compile Include="IntegrationTests\Sample\CreateItemCommandHandler.cs" />
     <Compile Include="IntegrationTests\crea_lista_delle_risorse_prenotabili.cs" />
-    <Compile Include="IntegrationTests\Item.cs" />
-    <Compile Include="IntegrationTests\ItemCreated.cs" />
-    <Compile Include="IntegrationTests\ItemDeleted.cs" />
-    <Compile Include="IntegrationTests\ItemId.cs" />
-    <Compile Include="IntegrationTests\ItemLoaded.cs" />
-    <Compile Include="IntegrationTests\ItemProjection.cs" />
-    <Compile Include="IntegrationTests\ItemReadModel.cs" />
+    <Compile Include="IntegrationTests\Sample\Item.cs" />
+    <Compile Include="IntegrationTests\Sample\ItemCreated.cs" />
+    <Compile Include="IntegrationTests\Sample\ItemDeleted.cs" />
+    <Compile Include="IntegrationTests\Sample\ItemId.cs" />
+    <Compile Include="IntegrationTests\Sample\ItemLoaded.cs" />
+    <Compile Include="IntegrationTests\Sample\ItemProjection.cs" />
+    <Compile Include="IntegrationTests\Sample\ItemReadModel.cs" />
     <Compile Include="MessagingTests\SimpleMessageQueueTests.cs" />
     <Compile Include="DomainTests\when_a_resource_is_created.cs" />
     <Compile Include="DomainTests\TestHelper.cs" />

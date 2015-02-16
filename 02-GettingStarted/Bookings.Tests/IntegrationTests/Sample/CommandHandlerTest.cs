@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace Bookings.Tests.IntegrationTests
+namespace Bookings.Tests.IntegrationTests.Sample
 {
 	[TestFixture]
 	public class CommandHandlerTest : AbstractIntegrationTest

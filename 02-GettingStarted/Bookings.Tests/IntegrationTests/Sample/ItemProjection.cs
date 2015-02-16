@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Bookings.Domain.Messaging;
 using MongoDB.Driver;
 
-namespace Bookings.Tests.IntegrationTests
+namespace Bookings.Tests.IntegrationTests.Sample
 {
     /// <summary>
 	/// TODO: Fix

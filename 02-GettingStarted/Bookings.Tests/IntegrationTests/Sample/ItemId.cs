@@ -1,6 +1,6 @@
 using System;
 
-namespace Bookings.Tests.IntegrationTests
+namespace Bookings.Tests.IntegrationTests.Sample
 {
     public class ItemId
     {

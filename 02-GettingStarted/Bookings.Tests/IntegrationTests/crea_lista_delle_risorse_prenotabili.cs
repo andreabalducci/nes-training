@@ -14,15 +14,14 @@ namespace Bookings.Tests.IntegrationTests
             var portatitle = new Resource(Guid.NewGuid(), "Pc Portatile");
             var proiettore = new Resource(Guid.NewGuid(), "Proiettore");
 
-            pc.MakeAvailable();
-            proiettore.MakeAvailable();
-            portatitle.MakeAvailable();
-            portatitle.MakeUnavailable();
+            //pc.MakeAvailable();
+            //proiettore.MakeAvailable();
+            //portatitle.MakeAvailable();
+            //portatitle.MakeUnavailable();
 
-            pc.Lend();
-            pc.Return();
-            proiettore.Lend();
-
+            //pc.Lend();
+            //pc.Return();
+            //proiettore.Lend();
 
             Repository.Save(pc, Guid.NewGuid(), null);
             Repository.Save(portatitle, Guid.NewGuid(), null);
