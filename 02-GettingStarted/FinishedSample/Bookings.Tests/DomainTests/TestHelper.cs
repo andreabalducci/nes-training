@@ -11,7 +11,7 @@ namespace Bookings.Tests.DomainTests
 			return aggregate.GetUncommittedEvents().OfType<TEvent>().Any();
 		}
 
-        public static TEvent Last<TEvent>(this IAggregate aggregate)
+        public static TEvent LastEventOfType<TEvent>(this IAggregate aggregate)
         {
             return aggregate.GetUncommittedEvents().OfType<TEvent>().Last();
         }

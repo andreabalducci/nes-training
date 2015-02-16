@@ -31,6 +31,6 @@ namespace Bookings.Tests.BookingContext.BookableItemSpecs
 
     //    Because of = () => Item.Libera();
 
-    //    It accetta_tutto = () => Item.RaisedEvent<PrenotazioneLiberata>().ShouldBeTrue();
+    //    It accetta_tutto = () => Item.HasRaised<PrenotazioneLiberata>().ShouldBeTrue();
     //}
 }

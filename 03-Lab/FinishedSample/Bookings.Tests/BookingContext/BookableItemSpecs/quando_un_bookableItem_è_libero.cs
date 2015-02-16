@@ -20,6 +20,6 @@ namespace Bookings.Tests.BookingContext.BookableItemSpecs
 
         Because of = () => Item.Riserva(new RichiestaDiPrenotazioneId(),  _da, _a);
 
-        It accetta_tutto = () => Item.RaisedEvent<RiservaAccettata>().ShouldBeTrue();
+        It accetta_tutto = () => Item.HasRaised<RiservaAccettata>().ShouldBeTrue();
     }
 }

@@ -22,6 +22,6 @@ namespace Bookings.Tests.BookingContext.RichiestaDiPrenotazioneSpecs
 
         private Because of = () => _rdp = new RichiestaDiPrenotazione(_idRichiesta, _biId, _utente, _da, _a, _causale);
 
-        It l_evento_di_creazione_è_stato_lanciato = () => _rdp.RaisedEvent<RichiestaDiPrenotazioneCreata>();
+        It l_evento_di_creazione_è_stato_lanciato = () => _rdp.HasRaised<RichiestaDiPrenotazioneCreata>();
     }
 }

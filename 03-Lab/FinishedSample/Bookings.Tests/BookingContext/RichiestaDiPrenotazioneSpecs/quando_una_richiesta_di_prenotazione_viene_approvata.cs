@@ -21,6 +21,6 @@ namespace Bookings.Tests.BookingContext.RichiestaDiPrenotazioneSpecs
 
         private Because of = () => _rdp.Approva();
 
-        It l_evento_di_approvazione_è_stato_lanciato = () => _rdp.RaisedEvent<RichiestaDiPrenotazioneApprovata>();
+        It l_evento_di_approvazione_è_stato_lanciato = () => _rdp.HasRaised<RichiestaDiPrenotazioneApprovata>();
     }
 }

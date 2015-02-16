@@ -41,9 +41,9 @@ namespace Bookings.Tests.DomainTests
             resource.ShouldHadRaised<ResourceCreated>();
 
         It created_event_should_have_id = () =>
-            resource.Last<ResourceCreated>().Id.ShouldBeLike(_id);
+            resource.LastEventOfType<ResourceCreated>().Id.ShouldBeLike(_id);
 
         It created_event_should_have_description = () =>
-            resource.Last<ResourceCreated>().Description.ShouldNotBeNull();
+            resource.LastEventOfType<ResourceCreated>().Description.ShouldNotBeNull();
     }
 }
