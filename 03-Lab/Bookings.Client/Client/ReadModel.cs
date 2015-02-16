@@ -24,13 +24,5 @@ namespace Bookings.Client.Client
 
             return list;
         }
-
-        public IList<ListaRichiesteDiPrenotazioneReadModel> ListRichiesteDiPrenotazione()
-        {
-            var collection = _readModelDb.GetCollection<ListaRichiesteDiPrenotazioneReadModel>("richiesteDiPrenotazione");
-            var list = collection.AsQueryable().OrderBy(x => x.Da).ToArray();
-
-            return list;
-        }
     }
 }

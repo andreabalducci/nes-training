@@ -94,11 +94,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandHandlers\ApprovaPrenotazioneCommandHandler.cs" />
     <Compile Include="CommandHandlers\BookableItemCommandHandler.cs" />
     <Compile Include="CommandHandlers\CreateNewBookableItemHandler.cs" />
     <Compile Include="CommandHandlers\DeleteBookableItemCommandHandler.cs" />
-    <Compile Include="CommandHandlers\RichiediPrenotazioneCommandHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryModel\CheckpointTracker.cs" />

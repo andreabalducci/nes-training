@@ -82,8 +82,6 @@
     <Compile Include="Messaging\ReadModelUpdatedMessage.cs" />
     <Compile Include="Projections\BookableItemInListReadModel.cs" />
     <Compile Include="Projections\BookableItemsListProjection.cs" />
-    <Compile Include="Projections\ListaRichiesteDiPrenotazioneProjection.cs" />
-    <Compile Include="Projections\ListaRichiesteDiPrenotazioneReadModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\MongoDBRegistration.cs" />
   </ItemGroup>
