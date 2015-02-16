@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bookings.ProcessManager.Processing;
+using Bookings.ProcessManager.BusinessProcesses;
 using Bookings.Shared.Domain.BookingContext.BookableItem.Events;
 using Castle.Core.Logging;
 using CommonDomain.Persistence;

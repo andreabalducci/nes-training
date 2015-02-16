@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Bookings.Shared.Domain.BookingContext.BookableItem;
 using Bookings.Shared.Domain.BookingContext.BookableItem.Commands;
 using Bookings.Shared.Domain.BookingContext.BookableItem.Events;
-using Bookings.Shared.Integration;
 using CommonDomain.Core;
 
-namespace Bookings.ProcessManager.Processing
+namespace Bookings.ProcessManager.BusinessProcesses
 {
     public class BackupItemProcess : SagaBase<object>
     {

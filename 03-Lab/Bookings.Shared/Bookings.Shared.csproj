@@ -65,13 +65,9 @@
     <Compile Include="Domain\BookingContext\BookableItem\Events\BookableItemCreated.cs" />
     <Compile Include="Domain\BookingContext\BookableItem\Events\BookableItemDeleted.cs" />
     <Compile Include="Domain\BookingContext\BookableItem\Events\PrenotazioneLiberata.cs" />
-    <Compile Include="Domain\BookingContext\BookableItem\Events\RiservaAccettata.cs" />
-    <Compile Include="Domain\BookingContext\BookableItem\Events\RiservaRifiutata.cs" />
     <Compile Include="Domain\BookingContext\BookableItem\PrenotazioneId.cs" />
     <Compile Include="Domain\BookingContext\RichiestaDiPrenotazione\Commands\CreaRichiestaDiPrenotazione.cs" />
     <Compile Include="Domain\BookingContext\RichiestaDiPrenotazione\Commands\RichiediApprovazionePrenotazione.cs" />
-    <Compile Include="Domain\BookingContext\RichiestaDiPrenotazione\Events\RichiestaDiPrenotazioneApprovata.cs" />
-    <Compile Include="Domain\BookingContext\RichiestaDiPrenotazione\Events\RichiestaDiPrenotazioneCreata.cs" />
     <Compile Include="Domain\BookingContext\RichiestaDiPrenotazione\Events\RichiestaDiPrenotazioneRespinta.cs" />
     <Compile Include="Domain\BookingContext\RichiestaDiPrenotazione\RichiestaDiPrenotazioneId.cs" />
     <Compile Include="IDomainEvent.cs" />

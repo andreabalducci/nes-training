@@ -88,7 +88,6 @@
     <Compile Include="Support\BusInstaller.cs" />
     <Compile Include="Support\ClientInstaller.cs" />
     <Compile Include="Support\HandlerNotifier.cs" />
-    <Compile Include="Support\RichiestaDiPrenotazioneCreataNotifier.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

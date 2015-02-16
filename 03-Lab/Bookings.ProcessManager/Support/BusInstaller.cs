@@ -1,7 +1,5 @@
 ﻿using System.Configuration;
-using Bookings.ProcessManager.Messaggi;
 using Bookings.Shared.Domain.BookingContext.BookableItem.Events;
-using Bookings.Shared.Domain.BookingContext.RichiestaDiPrenotazione.Events;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
@@ -36,11 +34,6 @@ namespace Bookings.ProcessManager.Support
                 .CreateBus().Start();
 
             bus.Subscribe<BookableItemCreated>();
-
-            bus.Subscribe<RiservaAccettata>();
-            bus.Subscribe<RiservaRifiutata>();
-            bus.Subscribe<RichiestaDiPrenotazioneApprovata>();
-            bus.Subscribe<TimeoutApprovazione>();
         }
     }
 }

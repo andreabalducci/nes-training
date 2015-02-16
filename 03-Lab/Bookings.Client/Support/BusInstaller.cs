@@ -3,7 +3,6 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using Bookings.Shared.Domain.BookingContext.RichiestaDiPrenotazione.Events;
 using Bookings.Shared.Messaging;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
@@ -29,12 +28,6 @@ namespace Bookings.Client.Support
                          .LifeStyle.Transient
             );
 
-            container.Register(
-                Component.For<IHandleMessages<RichiestaDiPrenotazioneCreata>, IHandleMessages<RichiestaDiPrenotazioneApprovata>>()
-                         .ImplementedBy<RichiestaDiPrenotazioneCreataNotifier>()
-                         .LifeStyle.Transient
-            );
-
             var bus = Configure.With(new WindsorContainerAdapter(container))
                 .Logging(l => l.OldLog4Net())
                 .Transport(t => t.UseMsmqAndGetInputQueueNameFromAppConfig())
@@ -44,8 +37,6 @@ namespace Bookings.Client.Support
                 .CreateBus().Start();
 
             bus.Subscribe<ReadModelUpdatedMessage>();
-            bus.Subscribe<RichiestaDiPrenotazioneCreata>();
-            bus.Subscribe<RichiestaDiPrenotazioneApprovata>();
         }
     }
 }
