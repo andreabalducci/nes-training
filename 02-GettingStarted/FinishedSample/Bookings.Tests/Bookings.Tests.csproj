@@ -84,7 +84,7 @@
     <Compile Include="IntegrationTests\ItemProjection.cs" />
     <Compile Include="IntegrationTests\ItemReadModel.cs" />
     <Compile Include="MessagingTests\SimpleMessageQueueTests.cs" />
-    <Compile Include="DomainTests\quando_creo_una_risorsa.cs" />
+    <Compile Include="DomainTests\when_a_resource_is_created.cs" />
     <Compile Include="DomainTests\TestHelper.cs" />
     <Compile Include="IntegrationTests\AbstractIntegrationTest.cs" />
     <Compile Include="IntegrationTests\CreateBookingIntegrationTest.cs" />

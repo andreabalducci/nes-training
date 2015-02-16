@@ -26,6 +26,6 @@ namespace Bookings.Tests.DomainTests
         It questa_diventa_non_prenotabile = () => item.Available.ShouldBeFalse();
 
         // eventi
-        It l_evento_di_resa_non_prenotabile_e_stato_scatenato = () => item.RaisedEvent<ResourceHasBeenSetUnavailable>().ShouldBeTrue();
+        It l_evento_di_resa_non_prenotabile_e_stato_scatenato = () => item.HasRaised<ResourceHasBeenSetUnavailable>().ShouldBeTrue();
     }
 }

@@ -26,6 +26,6 @@ namespace Bookings.Tests.DomainTests
         It questa_diventa_non_presa = () => item.Lent.ShouldBeFalse();
 
         // eventi
-        It l_evento_di_restituita_e_stato_scatenato = () => item.RaisedEvent<ResourceReturned>().ShouldBeTrue();
+        It l_evento_di_restituita_e_stato_scatenato = () => item.HasRaised<ResourceReturned>().ShouldBeTrue();
     }
 }

@@ -22,9 +22,11 @@ namespace Bookings.Tests.DomainTests
             };
 
         // transizioni di stato
-        It questa_diventa_dismessa = () => item.Dismissed.ShouldBeTrue();
+        It questa_diventa_dismessa = () => 
+            item.Dismissed.ShouldBeTrue();
 
         // eventi
-        It l_evento_di_dismessa_e_stato_scatenato = () => item.RaisedEvent<ResourceDismissed>().ShouldBeTrue();
+        It l_evento_di_dismessa_e_stato_scatenato = () => 
+            item.ShouldHadRaised<ResourceDismissed>();
     }
 }
