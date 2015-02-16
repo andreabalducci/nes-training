@@ -125,7 +125,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Bookings.Domain\Bookings.Domain.csproj">
       <Project>{200F759E-C8AD-433E-AF39-C7238235E048}</Project>
-      <Name>Bookings.Domain %2803 - Lab\Bookings.Domain%29</Name>
+      <Name>Bookings.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bookings.Shared\Bookings.Shared.csproj">
       <Project>{8A82AB26-3DF7-48A6-AF59-1CCE04B39104}</Project>
