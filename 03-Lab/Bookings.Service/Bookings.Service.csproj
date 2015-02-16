@@ -38,45 +38,45 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
-      <HintPath>..\..\..\packages\Castle.Core.3.3.3\lib\net40-client\Castle.Core.dll</HintPath>
+      <HintPath>..\..\packages\Castle.Core.3.3.3\lib\net40-client\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Facilities.Logging">
-      <HintPath>..\..\..\packages\Castle.LoggingFacility.3.3.0\lib\net40\Castle.Facilities.Logging.dll</HintPath>
+      <HintPath>..\..\packages\Castle.LoggingFacility.3.3.0\lib\net40\Castle.Facilities.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Services.Logging.Log4netIntegration">
-      <HintPath>..\..\..\packages\Castle.Core-log4net.3.3.3\lib\net40\Castle.Services.Logging.Log4netIntegration.dll</HintPath>
+      <HintPath>..\..\packages\Castle.Core-log4net.3.3.3\lib\net40\Castle.Services.Logging.Log4netIntegration.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Windsor">
-      <HintPath>..\..\..\packages\Castle.Windsor.3.3.0\lib\net40\Castle.Windsor.dll</HintPath>
+      <HintPath>..\..\packages\Castle.Windsor.3.3.0\lib\net40\Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="Fasterflect">
-      <HintPath>..\..\..\packages\fasterflect.2.1.3\lib\net40\Fasterflect.dll</HintPath>
+      <HintPath>..\..\packages\fasterflect.2.1.3\lib\net40\Fasterflect.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+      <HintPath>..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson, Version=1.10.0.62, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Bson.dll</HintPath>
+      <HintPath>..\..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver, Version=1.10.0.62, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Driver.dll</HintPath>
+      <HintPath>..\..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="NEventStore">
-      <HintPath>..\..\..\packages\NEventStore.5.1.0\lib\net40\NEventStore.dll</HintPath>
+      <HintPath>..\..\packages\NEventStore.5.1.0\lib\net40\NEventStore.dll</HintPath>
     </Reference>
     <Reference Include="NEventStore.Persistence.MongoDB">
-      <HintPath>..\..\..\packages\NEventStore.Persistence.MongoDB.5.0.0.103\lib\net40\NEventStore.Persistence.MongoDB.dll</HintPath>
+      <HintPath>..\..\packages\NEventStore.Persistence.MongoDB.5.0.0.103\lib\net40\NEventStore.Persistence.MongoDB.dll</HintPath>
     </Reference>
     <Reference Include="Rebus">
-      <HintPath>..\..\..\packages\Rebus.0.79.0\lib\NET45\Rebus.dll</HintPath>
+      <HintPath>..\..\packages\Rebus.0.79.0\lib\NET45\Rebus.dll</HintPath>
     </Reference>
     <Reference Include="Rebus.Castle.Windsor">
-      <HintPath>..\..\..\packages\Rebus.Castle.Windsor.0.79.0\lib\NET45\Rebus.Castle.Windsor.dll</HintPath>
+      <HintPath>..\..\packages\Rebus.Castle.Windsor.0.79.0\lib\NET45\Rebus.Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="Rebus.MongoDb">
-      <HintPath>..\..\..\packages\Rebus.MongoDb.0.79.0\lib\NET45\Rebus.MongoDb.dll</HintPath>
+      <HintPath>..\..\packages\Rebus.MongoDb.0.79.0\lib\NET45\Rebus.MongoDb.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -87,10 +87,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Topshelf">
-      <HintPath>..\..\..\packages\Topshelf.3.1.4\lib\net40-full\Topshelf.dll</HintPath>
+      <HintPath>..\..\packages\Topshelf.3.1.4\lib\net40-full\Topshelf.dll</HintPath>
     </Reference>
     <Reference Include="TopShelf.OldLog4NetIntegration">
-      <HintPath>..\..\..\packages\TopShelf.OldLog4NetIntegration.1.01\lib\net35\TopShelf.OldLog4NetIntegration.dll</HintPath>
+      <HintPath>..\..\packages\TopShelf.OldLog4NetIntegration.1.01\lib\net35\TopShelf.OldLog4NetIntegration.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

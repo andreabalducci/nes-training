@@ -36,49 +36,49 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
-      <HintPath>..\..\..\packages\Castle.Core.3.2.0\lib\net45\Castle.Core.dll</HintPath>
+      <HintPath>..\..\packages\Castle.Core.3.2.0\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Windsor">
-      <HintPath>..\..\..\packages\Castle.Windsor.3.2.0\lib\net45\Castle.Windsor.dll</HintPath>
+      <HintPath>..\..\packages\Castle.Windsor.3.2.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="Machine.Specifications">
-      <HintPath>..\..\..\packages\Machine.Specifications.0.9.1\lib\net40\Machine.Specifications.dll</HintPath>
+      <HintPath>..\..\packages\Machine.Specifications.0.9.1\lib\net40\Machine.Specifications.dll</HintPath>
     </Reference>
     <Reference Include="Machine.Specifications.Clr4">
-      <HintPath>..\..\..\packages\Machine.Specifications.0.9.1\lib\net40\Machine.Specifications.Clr4.dll</HintPath>
+      <HintPath>..\..\packages\Machine.Specifications.0.9.1\lib\net40\Machine.Specifications.Clr4.dll</HintPath>
     </Reference>
     <Reference Include="Machine.Specifications.Should">
-      <HintPath>..\..\..\packages\Machine.Specifications.Should.0.7.2\lib\net45\Machine.Specifications.Should.dll</HintPath>
+      <HintPath>..\..\packages\Machine.Specifications.Should.0.7.2\lib\net45\Machine.Specifications.Should.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson">
-      <HintPath>..\..\..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Bson.dll</HintPath>
+      <HintPath>..\..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver">
-      <HintPath>..\..\..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Driver.dll</HintPath>
+      <HintPath>..\..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="NEventStore">
-      <HintPath>..\..\..\packages\NEventStore.5.1.0\lib\net40\NEventStore.dll</HintPath>
+      <HintPath>..\..\packages\NEventStore.5.1.0\lib\net40\NEventStore.dll</HintPath>
     </Reference>
     <Reference Include="NEventStore.Persistence.MongoDB">
-      <HintPath>..\..\..\packages\NEventStore.Persistence.MongoDB.5.0.0.103\lib\net40\NEventStore.Persistence.MongoDB.dll</HintPath>
+      <HintPath>..\..\packages\NEventStore.Persistence.MongoDB.5.0.0.103\lib\net40\NEventStore.Persistence.MongoDB.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Rebus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Rebus.0.79.0\lib\NET45\Rebus.dll</HintPath>
+      <HintPath>..\..\packages\Rebus.0.79.0\lib\NET45\Rebus.dll</HintPath>
     </Reference>
     <Reference Include="Rebus.Castle.Windsor">
-      <HintPath>..\..\..\packages\Rebus.Castle.Windsor.0.79.0\lib\NET45\Rebus.Castle.Windsor.dll</HintPath>
+      <HintPath>..\..\packages\Rebus.Castle.Windsor.0.79.0\lib\NET45\Rebus.Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="Rebus.MongoDb">
-      <HintPath>..\..\..\packages\Rebus.MongoDb.0.79.0\lib\NET45\Rebus.MongoDb.dll</HintPath>
+      <HintPath>..\..\packages\Rebus.MongoDb.0.79.0\lib\NET45\Rebus.MongoDb.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

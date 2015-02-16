@@ -38,35 +38,35 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
-      <HintPath>..\..\..\packages\Castle.Core.3.3.3\lib\net40-client\Castle.Core.dll</HintPath>
+      <HintPath>..\..\packages\Castle.Core.3.3.3\lib\net40-client\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Facilities.Logging">
-      <HintPath>..\..\..\packages\Castle.LoggingFacility.3.3.0\lib\net40\Castle.Facilities.Logging.dll</HintPath>
+      <HintPath>..\..\packages\Castle.LoggingFacility.3.3.0\lib\net40\Castle.Facilities.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Services.Logging.Log4netIntegration">
-      <HintPath>..\..\..\packages\Castle.Core-log4net.3.3.3\lib\net40\Castle.Services.Logging.Log4netIntegration.dll</HintPath>
+      <HintPath>..\..\packages\Castle.Core-log4net.3.3.3\lib\net40\Castle.Services.Logging.Log4netIntegration.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Windsor">
-      <HintPath>..\..\..\packages\Castle.Windsor.3.3.0\lib\net40\Castle.Windsor.dll</HintPath>
+      <HintPath>..\..\packages\Castle.Windsor.3.3.0\lib\net40\Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson">
-      <HintPath>..\..\..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Bson.dll</HintPath>
+      <HintPath>..\..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver">
-      <HintPath>..\..\..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Driver.dll</HintPath>
+      <HintPath>..\..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Rebus">
-      <HintPath>..\..\..\packages\Rebus.0.79.0\lib\NET45\Rebus.dll</HintPath>
+      <HintPath>..\..\packages\Rebus.0.79.0\lib\NET45\Rebus.dll</HintPath>
     </Reference>
     <Reference Include="Rebus.Castle.Windsor">
-      <HintPath>..\..\..\packages\Rebus.Castle.Windsor.0.79.0\lib\NET45\Rebus.Castle.Windsor.dll</HintPath>
+      <HintPath>..\..\packages\Rebus.Castle.Windsor.0.79.0\lib\NET45\Rebus.Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="Rebus.MongoDb">
-      <HintPath>..\..\..\packages\Rebus.MongoDb.0.79.0\lib\NET45\Rebus.MongoDb.dll</HintPath>
+      <HintPath>..\..\packages\Rebus.MongoDb.0.79.0\lib\NET45\Rebus.MongoDb.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
