@@ -30,7 +30,7 @@ namespace SimpleEventStore.Domain
         public void Apply(ItemCreated evt)
         {
             Id = evt.Id;
-            SafetyStockLevel = evt.MinQta;
+            SafetyStockLevel = evt.SafetyStockLevel;
         }
 
         public void Apply(ItemDisabled evt)
