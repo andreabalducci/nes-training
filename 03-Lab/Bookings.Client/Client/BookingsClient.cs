@@ -139,6 +139,7 @@ namespace Bookings.Client.Client
             Console.WriteLine(" Bookings Client ");
             Console.WriteLine("==================================================");
             Console.WriteLine(" c       -> Create new BookableItem");
+            Console.WriteLine(" cb      -> Create 1000 BookableItem");
             Console.WriteLine(" del     -> delete item");
             Console.WriteLine(" ls      -> list BookableItem(s)");
             Console.WriteLine(" q       -> Quit");
