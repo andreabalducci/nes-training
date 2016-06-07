@@ -20,12 +20,14 @@ namespace Bookings.Service.QueryModel
 
         private IDisposable _subscription;
         private CheckpointTracker _tracker;
-        BookableItemsListProjection projection;
+        BookableItemsListProjection _projection;
+        CommitSequencer _sequencer;
+        PollingClient2 _client;
         public ProjectionEngine(IStoreEvents eventStore, MongoDatabase readModelDb, NotifyReadModelUpdates updates)
         {
             Logger = NullLogger.Instance;
             _eventStore = eventStore;
-            projection = new BookableItemsListProjection(readModelDb, updates);
+            _projection = new BookableItemsListProjection(readModelDb, updates);
             _tracker = new CheckpointTracker(readModelDb);
         }
 
@@ -33,7 +35,7 @@ namespace Bookings.Service.QueryModel
         {
             foreach (var @event in commit.Events)
             {
-                ((dynamic) projection).On((dynamic) @event.Body);
+                ((dynamic) _projection).On((dynamic) @event.Body);
             }
             return HandlingResult.MoveToNext;
         }
@@ -41,18 +43,17 @@ namespace Bookings.Service.QueryModel
         public void Start()
         {
             var start = _tracker.LoadCheckpoint();
-
-            var client = new PollingClient2(_eventStore.Advanced, Handle, 1000);
+            _sequencer = new CommitSequencer(Handle, 0, 5000);
+            _client = new PollingClient2(_eventStore.Advanced, _sequencer.Handle, 1000);
             var dispatcher = new CommitsDispatcher(_tracker, Logger);
 
-            client.StartFrom(null);
+            _client.StartFrom(null);
 
             Logger.InfoFormat("Projection engine started from {0}", start);
         }
 
         public void Stop()
         {
-            _subscription.Dispose();
             Logger.Info("Projection engine stopped");
         }
     }

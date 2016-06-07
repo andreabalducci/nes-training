@@ -35,6 +35,10 @@ namespace Bookings.Client.Client
                         CreateBookableItem();
                         break;
 
+                    case "cb":
+                        CreateBookableItemBatch();
+                        break;
+
                     case "ls":
                         ListBookableItems();
                         break;
@@ -86,6 +90,19 @@ namespace Bookings.Client.Client
                 return;
 
             _bus.Send(new CreateBookableItem(new BookableItemId(Guid.NewGuid()), description));
+        }
+
+        private void CreateBookableItemBatch()
+        {
+            Console.WriteLine();
+            Console.Write("Description (empty cancel): ");
+            var description = Console.ReadLine().Trim();
+            if (string.IsNullOrWhiteSpace(description))
+                return;
+            for (int i = 0; i < 10000; i++)
+            {
+                _bus.Send(new CreateBookableItem(new BookableItemId(Guid.NewGuid()), description));
+            }
         }
 
         private void DeleteBookableItem()
