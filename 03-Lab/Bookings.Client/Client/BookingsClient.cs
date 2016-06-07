@@ -99,10 +99,14 @@ namespace Bookings.Client.Client
             var description = Console.ReadLine().Trim();
             if (string.IsNullOrWhiteSpace(description))
                 return;
-
             for (int i = 0; i < 10000; i++)
             {
-                _bus.Send(new CreateBookableItem(new BookableItemId(Guid.NewGuid()), description + i.ToString()));
+                var bookableItemId = new BookableItemId(Guid.NewGuid());
+                //generatedIds.Add(bookableItemId);
+                for (int j = 0; j < 3; j++)
+                {
+                    _bus.Send(new CreateBookableItem(bookableItemId, description + "_" + i.ToString() + "_" + j.ToString()));
+                }
             }
         }
 

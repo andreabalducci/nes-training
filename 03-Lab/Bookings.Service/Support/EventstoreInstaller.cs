@@ -29,7 +29,7 @@ namespace Bookings.Service.Support
         {
             var readModel = new MongoUrl(ConfigurationManager.ConnectionStrings["readmodel"].ConnectionString);
             MongoPersistenceOptions options = new MongoPersistenceOptions();
-            options.ServerSideOptimisticLoop = true;
+            options.ServerSideOptimisticLoop = false;
             container.Register(
                 Classes
                     .FromAssemblyInThisApplication()

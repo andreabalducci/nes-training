@@ -16,8 +16,16 @@ namespace Bookings.Service.CommandHandlers
 
         public void Handle(RiservaBookableItem message)
         {
-            BookableItem risorsa = Repository.GetById<BookableItem>(message.Itemid.Id);
-            Repository.Save(risorsa, message.CommandId);
+            try
+            {
+                BookableItem risorsa = Repository.GetById<BookableItem>(message.Itemid.Id);
+                Repository.Save(risorsa, message.CommandId);
+            }
+            catch (System.Exception ex)
+            {
+                
+            }
+           
         }
     }
 }

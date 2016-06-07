@@ -7,6 +7,7 @@ using Bookings.Shared.Domain.BookingContext.BookableItem.Commands;
 using Castle.Core.Logging;
 using CommonDomain.Persistence;
 using Rebus;
+using System.Threading;
 
 namespace Bookings.Service.CommandHandlers
 {
@@ -20,12 +21,21 @@ namespace Bookings.Service.CommandHandlers
             Repository = repository;
         }
 
+        static Int32 conflictCount = 0;
         public void Handle(CreateBookableItem message)
         {
-            Logger.DebugFormat("Creo "+message.Description);
+            try
+            {
+                Logger.DebugFormat("Creo " + message.Description);
 
-            var item = new BookableItem(message.Itemid, message.Description);
-            Repository.Save(item, message.CommandId);
+                var item = new BookableItem(message.Itemid, message.Description);
+                Repository.Save(item, message.CommandId);
+            }
+            catch (Exception ex)
+            {
+                Interlocked.Increment(ref conflictCount);
+            }
+           
         }
     }
 }
