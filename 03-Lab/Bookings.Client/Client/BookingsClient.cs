@@ -35,6 +35,10 @@ namespace Bookings.Client.Client
                         CreateBookableItem();
                         break;
 
+                    case "cb":
+                        CreateBookableItemBulk();
+                        break;
+
                     case "ls":
                         ListBookableItems();
                         break;
@@ -88,6 +92,20 @@ namespace Bookings.Client.Client
             _bus.Send(new CreateBookableItem(new BookableItemId(Guid.NewGuid()), description));
         }
 
+        private void CreateBookableItemBulk()
+        {
+            Console.WriteLine();
+            Console.Write("Description (empty cancel): ");
+            var description = Console.ReadLine().Trim();
+            if (string.IsNullOrWhiteSpace(description))
+                return;
+
+            for (int i = 0; i < 10000; i++)
+            {
+                _bus.Send(new CreateBookableItem(new BookableItemId(Guid.NewGuid()), description + i.ToString()));
+            }
+        }
+
         private void DeleteBookableItem()
         {
             var list = _readModel.ListItems();
@@ -122,6 +140,7 @@ namespace Bookings.Client.Client
             Console.WriteLine(" Bookings Client ");
             Console.WriteLine("==================================================");
             Console.WriteLine(" c       -> Create new BookableItem");
+            Console.WriteLine(" cb      -> Create 10000 new BookableItem");
             Console.WriteLine(" del     -> delete item");
             Console.WriteLine(" ls      -> list BookableItem(s)");
             Console.WriteLine(" q       -> Quit");

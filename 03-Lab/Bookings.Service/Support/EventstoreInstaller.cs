@@ -19,6 +19,7 @@ using MongoDB.Driver;
 using NEventStore;
 using NEventStore.Dispatcher;
 using NEventStore.Serialization;
+using NEventStore.Persistence.MongoDB;
 
 namespace Bookings.Service.Support
 {
@@ -27,7 +28,8 @@ namespace Bookings.Service.Support
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             var readModel = new MongoUrl(ConfigurationManager.ConnectionStrings["readmodel"].ConnectionString);
-
+            MongoPersistenceOptions options = new MongoPersistenceOptions();
+            options.ServerSideOptimisticLoop = true;
             container.Register(
                 Classes
                     .FromAssemblyInThisApplication()
@@ -66,7 +68,7 @@ namespace Bookings.Service.Support
 
                 Component.For<IStoreEvents>().UsingFactoryMethod(k =>
                         Wireup.Init()
-                            .UsingMongoPersistence("events", new DocumentObjectSerializer())
+                            .UsingMongoPersistence("events", new DocumentObjectSerializer(), options)
                             .InitializeStorageEngine()
                             .UsingSynchronousDispatchScheduler(k.Resolve<IDispatchCommits>())
                             .Build()
