@@ -24,9 +24,17 @@ namespace Bookings.Service.CommandHandlers
         public void Handle(CreateBookableItem message)
         {
             Logger.DebugFormat("Creo "+message.Description);
-
-            var item = new BookableItem(message.Itemid, message.Description);
-            Repository.Save(item, message.CommandId);
+            try
+            {
+                var item = new BookableItem(message.Itemid, message.Description);
+                Repository.Save(item, message.CommandId);
+                Logger.Info("Salvato " + message.Description);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Conflitto: " + message.Description, ex);
+            }
+            
         }
     }
 }

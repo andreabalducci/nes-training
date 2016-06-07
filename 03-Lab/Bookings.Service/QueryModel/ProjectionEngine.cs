@@ -43,8 +43,8 @@ namespace Bookings.Service.QueryModel
         public void Start()
         {
             var start = _tracker.LoadCheckpoint();
-            _sequencer = new CommitSequencer(Handle, 0, 5000);
-            _client = new PollingClient2(_eventStore.Advanced, _sequencer.Handle, 1000);
+            _sequencer = new CommitSequencer(Handle, 0, 2000);
+            _client = new PollingClient2(_eventStore.Advanced, _sequencer.Handle, 50);
             var dispatcher = new CommitsDispatcher(_tracker, Logger);
 
             _client.StartFrom(null);

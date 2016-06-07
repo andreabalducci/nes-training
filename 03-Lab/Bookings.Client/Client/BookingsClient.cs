@@ -92,6 +92,7 @@ namespace Bookings.Client.Client
             _bus.Send(new CreateBookableItem(new BookableItemId(Guid.NewGuid()), description));
         }
 
+        List<BookableItemId> generatedIds = new List<BookableItemId>();
         private void CreateBookableItemBatch()
         {
             Console.WriteLine();
@@ -101,7 +102,12 @@ namespace Bookings.Client.Client
                 return;
             for (int i = 0; i < 10000; i++)
             {
-                _bus.Send(new CreateBookableItem(new BookableItemId(Guid.NewGuid()), description));
+                var bookableItemId = new BookableItemId(Guid.NewGuid());
+                //generatedIds.Add(bookableItemId);
+                for (int j = 0; j < 3; j++)
+                {
+                    _bus.Send(new CreateBookableItem(bookableItemId, description + "_" + i.ToString() + "_" + j.ToString()));
+                }
             }
         }
 
