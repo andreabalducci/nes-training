@@ -29,8 +29,8 @@ namespace Bookings.ProcessManager.Support
                 .Logging(l => l.OldLog4Net())
                 .Transport(t => t.UseMsmqAndGetInputQueueNameFromAppConfig())
                 .MessageOwnership(d => d.FromRebusConfigurationSection())
-                .Timeouts(t => t.StoreInMongoDb(cstring, "pm-timeouts"))
-                .Subscriptions(s => s.StoreInMongoDb(cstring, "pm-subscriptions"))
+                //.Timeouts(t => t.StoreInMongoDb(cstring, "pm-timeouts"))
+                .Subscriptions(s => s.StoreInMemory())
                 .CreateBus().Start();
 
             bus.Subscribe<BookableItemCreated>();

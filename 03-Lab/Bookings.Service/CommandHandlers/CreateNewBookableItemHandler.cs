@@ -5,8 +5,9 @@ using System.Text;
 using Bookings.Domain.BookingContext.BookableItem;
 using Bookings.Shared.Domain.BookingContext.BookableItem.Commands;
 using Castle.Core.Logging;
-using CommonDomain.Persistence;
+
 using Rebus;
+using NEventStore.Domain.Persistence;
 
 namespace Bookings.Service.CommandHandlers
 {

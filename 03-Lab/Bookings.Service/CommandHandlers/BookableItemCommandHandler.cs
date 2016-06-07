@@ -1,6 +1,6 @@
 using Bookings.Domain.BookingContext.BookableItem;
 using Bookings.Shared.Domain.BookingContext.BookableItem.Commands;
-using CommonDomain.Persistence;
+using NEventStore.Domain.Persistence;
 using Rebus;
 
 namespace Bookings.Service.CommandHandlers

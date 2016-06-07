@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Bookings.Shared.Domain.BookingContext.BookableItem;
 using Bookings.Shared.Domain.BookingContext.BookableItem.Events;
-using CommonDomain.Core;
+using NEventStore.Domain.Core;
 
 namespace Bookings.Domain.BookingContext.BookableItem
 {

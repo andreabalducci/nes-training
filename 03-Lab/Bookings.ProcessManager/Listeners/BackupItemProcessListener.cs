@@ -5,7 +5,7 @@ using System.Text;
 using Bookings.ProcessManager.BusinessProcesses;
 using Bookings.Shared.Domain.BookingContext.BookableItem.Events;
 using Castle.Core.Logging;
-using CommonDomain.Persistence;
+using NEventStore.Domain.Persistence;
 using Rebus;
 
 namespace Bookings.ProcessManager.Listeners

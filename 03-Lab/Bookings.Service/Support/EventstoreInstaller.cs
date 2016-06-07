@@ -10,14 +10,14 @@ using Castle.Facilities.Startable;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using CommonDomain;
-using CommonDomain.Core;
-using CommonDomain.Persistence;
-using CommonDomain.Persistence.EventStore;
+using NEventStore.Domain;
+using NEventStore.Domain.Core;
+using NEventStore.Domain.Persistence;
+using NEventStore.Domain.Persistence.EventStore;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using NEventStore;
-using NEventStore.Dispatcher;
+
 using NEventStore.Serialization;
 
 namespace Bookings.Service.Support
@@ -42,9 +42,6 @@ namespace Bookings.Service.Support
                     .For<MongoDatabase>()
                     .UsingFactoryMethod( k => new MongoClient(readModel).GetServer().GetDatabase(readModel.DatabaseName)),
 
-                Component
-                    .For<IDispatchCommits>()
-                    .ImplementedBy<CommitsDispatcher>(),
 
                 Component
                     .For<IRepository>()
@@ -68,7 +65,7 @@ namespace Bookings.Service.Support
                         Wireup.Init()
                             .UsingMongoPersistence("events", new DocumentObjectSerializer())
                             .InitializeStorageEngine()
-                            .UsingSynchronousDispatchScheduler(k.Resolve<IDispatchCommits>())
+            
                             .Build()
                     )
                 );

@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using CommonDomain;
+using NEventStore.Domain;
 using Machine.Specifications;
 
 namespace Bookings.Tests

@@ -1,6 +1,6 @@
 using System;
-using CommonDomain;
-using CommonDomain.Persistence;
+using NEventStore.Domain;
+using NEventStore.Domain.Persistence;
 using Fasterflect;
 
 namespace Bookings.Service.Support

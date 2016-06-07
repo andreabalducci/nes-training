@@ -32,8 +32,8 @@ namespace Bookings.Service.Support
                 .Logging(l => l.OldLog4Net())
                 .Transport(t => t.UseMsmqAndGetInputQueueNameFromAppConfig())
                 .MessageOwnership(d => d.FromRebusConfigurationSection())
-                .Timeouts(t => t.StoreInMongoDb(cstring, "service-timeouts"))
-                .Subscriptions(s => s.StoreInMongoDb(cstring, "service-subscriptions"))
+                //.Timeouts(t => t.StoreInMongoDb(cstring, "service-timeouts"))
+                               .Subscriptions(s => s.StoreInMemory())
                 .CreateBus().Start();
         }
     }

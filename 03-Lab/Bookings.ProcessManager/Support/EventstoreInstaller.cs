@@ -6,15 +6,14 @@ using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using CommonDomain;
-using CommonDomain.Core;
-using CommonDomain.Persistence;
-using CommonDomain.Persistence.EventStore;
+
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using NEventStore;
-using NEventStore.Dispatcher;
+
 using NEventStore.Serialization;
+using NEventStore.Domain.Persistence.EventStore;
+using NEventStore.Domain.Persistence;
 
 namespace Bookings.ProcessManager.Support
 {
@@ -23,9 +22,6 @@ namespace Bookings.ProcessManager.Support
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
-                Component
-                    .For<IDispatchCommits>()
-                    .ImplementedBy<CommitsDispatcher>(),
                 
                 Component
                     .For<ISagaRepository>()
@@ -37,7 +33,6 @@ namespace Bookings.ProcessManager.Support
                                              Wireup.Init()
                                                    .UsingMongoPersistence("pm", new DocumentObjectSerializer())
                                                    .InitializeStorageEngine()
-                                                    .UsingSynchronousDispatchScheduler(k.Resolve<IDispatchCommits>())
 //                                                   .UsingAsynchronousDispatchScheduler(k.Resolve<IDispatchCommits>())
                                                    .Build()
                     )
