@@ -7,6 +7,9 @@ using Castle.Core.Logging;
 using MongoDB.Driver;
 using NEventStore;
 using NEventStore.Client;
+using static NEventStore.Client.PollingClient2;
+using Bookings.Shared.Projections;
+using Bookings.Shared.Messaging;
 
 namespace Bookings.Service.QueryModel
 {
@@ -14,26 +17,35 @@ namespace Bookings.Service.QueryModel
     {
         private IStoreEvents _eventStore;
         public ILogger Logger { get; set; }
-        private IObserveCommits _observer;
+
         private IDisposable _subscription;
         private CheckpointTracker _tracker;
-        public ProjectionEngine(IStoreEvents eventStore, MongoDatabase readModelDb)
+        BookableItemsListProjection projection;
+        public ProjectionEngine(IStoreEvents eventStore, MongoDatabase readModelDb, NotifyReadModelUpdates updates)
         {
             Logger = NullLogger.Instance;
             _eventStore = eventStore;
+            projection = new BookableItemsListProjection(readModelDb, updates);
             _tracker = new CheckpointTracker(readModelDb);
+        }
+
+        private HandlingResult Handle(ICommit commit)
+        {
+            foreach (var @event in commit.Events)
+            {
+                ((dynamic) projection).On((dynamic) @event.Body);
+            }
+            return HandlingResult.MoveToNext;
         }
 
         public void Start()
         {
             var start = _tracker.LoadCheckpoint();
 
-            var client = new PollingClient(_eventStore.Advanced, 1000);
+            var client = new PollingClient2(_eventStore.Advanced, Handle, 1000);
             var dispatcher = new CommitsDispatcher(_tracker, Logger);
-            _observer = client.ObserveFrom(start);
-            _subscription = _observer.Subscribe(dispatcher);
 
-            _observer.Start();
+            client.StartFrom(null);
 
             Logger.InfoFormat("Projection engine started from {0}", start);
         }
@@ -41,7 +53,6 @@ namespace Bookings.Service.QueryModel
         public void Stop()
         {
             _subscription.Dispose();
-            _observer.Dispose();
             Logger.Info("Projection engine stopped");
         }
     }
