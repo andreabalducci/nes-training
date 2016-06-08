@@ -7,7 +7,6 @@ using Castle.Core.Logging;
 using MongoDB.Driver;
 using NEventStore;
 using NEventStore.Client;
-using static NEventStore.Client.PollingClient2;
 using Bookings.Shared.Projections;
 using Bookings.Shared.Messaging;
 
@@ -31,13 +30,13 @@ namespace Bookings.Service.QueryModel
             _tracker = new CheckpointTracker(readModelDb);
         }
 
-        private HandlingResult Handle(ICommit commit)
+        private PollingClient2.HandlingResult Handle(ICommit commit)
         {
             foreach (var @event in commit.Events)
             {
                 ((dynamic) _projection).On((dynamic) @event.Body);
             }
-            return HandlingResult.MoveToNext;
+            return PollingClient2.HandlingResult.MoveToNext;
         }
 
         public void Start()
